@@ -1,0 +1,13 @@
+{
+  "name": "ziro-sales",
+  "version": "1.0.0",
+  "description": "Online sales control",
+  "repository": "https://github.com/vitorbarbosa19/ziro-sales.git",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["react"],
+  "author": "Vitor Barbosa",
+  "license": "ISC"
+}
