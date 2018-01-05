@@ -32,3 +32,18 @@ ul {
 		font-size: 55%;
 	}
 }
+
+/*---------*/
+
+input[type='text']:focus + .suggestions {
+	visibility: visible;
+	height: 40px;
+}
+
+.suggestions {
+	visibility: hidden;
+	height: 0;
+	overflow: hidden;
+	background-color: grey;
+	transition: height 0.15s ease;
+}

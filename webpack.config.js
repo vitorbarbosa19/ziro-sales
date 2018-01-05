@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const path = require('path')
+const spreadsheetUrl = require('./credentials')
 
 module.exports = {
 	entry: './src/index.js',
@@ -21,7 +22,8 @@ module.exports = {
 							'@babel/preset-react'
 						],
 						plugins: [
-							'@babel/transform-runtime'
+							'@babel/transform-runtime',
+							'@babel/plugin-proposal-class-properties'
 						]
 					}
 				}
@@ -34,5 +36,10 @@ module.exports = {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({ template: './src/index.html' }),
+		new webpack.DefinePlugin({
+			'process.env': {
+				SPREADSHEET_URL: JSON.stringify(spreadsheetUrl)
+			}
+		})
 	]
 }

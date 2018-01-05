@@ -1,9 +1,8 @@
 import React from 'react'
+import RegisterNewSale from './RegisterNewSale/index'
 
-const App = () => {
-	return (
-		<p>Hi</p>
-	)
-}
+const App = () => (
+	<RegisterNewSale />
+)
 
 export default App
