@@ -4,8 +4,10 @@ import DropDown from './DropDown/index'
 const Form = (props) => (
 	<div>
 		<form>
+			{/* supplier field */}
 			<DropDown
-				suppliers={props.suppliers}
+				updateParent={props.saveSupplier}
+				listToDisplay={props.suppliers}
 			/>
 		</form>
 	</div>

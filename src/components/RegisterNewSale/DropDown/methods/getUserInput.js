@@ -1,9 +1,10 @@
 import filterList from '../utils/filterList'
 
 const getUserInput = (that) => (event) => {
+	that.props.updateParent(event.target.value)
 	that.setState({ 
 		userInput: event.target.value,
-		filter: filterList(that.props[that.state.elementsToDisplay], event.target.value)
+		filter: filterList(that.props.listToDisplay, event.target.value)
 	})
 }
 

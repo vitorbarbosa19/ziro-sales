@@ -1,14 +1,19 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Form from './Form'
-import { initialState, transition } from './functions/stateMachine'
+import { initialState, transition } from './utils/stateMachine'
+import saveSupplier from './methods/saveSupplier'
 
 export default class RegisterNewSale extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
+			/* state machine initial state */
+			uiState: initialState,
+			/* presentational data */
 			suppliers: [],
-			uiState: initialState
+			/* user input data */
+			input_supplier: ''
 		}
 	}
 
@@ -23,13 +28,15 @@ export default class RegisterNewSale extends Component {
 			this.changeUiState('FETCH_ERROR')
 		}
 	}
-
+	/* methods */
 	changeUiState = transition(this)
-
+	saveSupplier = saveSupplier(this)
+	/* ------ */
 	render() {
 		return (
 			<Form 
 				suppliers={this.state.suppliers}
+				saveSupplier={this.saveSupplier}
 				uiState={this.state.uiState}
 			/>
 		)

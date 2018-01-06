@@ -9,7 +9,6 @@ export default class DropDown extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			elementsToDisplay: Object.keys(props).pop(),
 			userInput: '',
 			filter: [],
 			isDropDownOpen: false
@@ -34,7 +33,7 @@ export default class DropDown extends Component {
 						{
 							this.state.isDropDownOpen ?
 								this.state.userInput === '' ?
-								renderList(this.props[this.state.elementsToDisplay], this.fillInput)
+								renderList(this.props.listToDisplay, this.fillInput)
 								:
 								renderList(this.state.filter, this.fillInput)
 							:
