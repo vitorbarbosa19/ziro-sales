@@ -37,13 +37,19 @@ ul {
 
 input[type='text']:focus + .suggestions {
 	visibility: visible;
-	height: 40px;
+	height: 400px;
 }
 
 .suggestions {
 	visibility: hidden;
 	height: 0;
 	overflow: hidden;
+	margin: 0;
 	background-color: grey;
 	transition: height 0.15s ease;
+}
+
+.field-suppliers {
+	display: flex;
+	flex-direction: column;
 }
