@@ -41,7 +41,7 @@ input[type='text']:focus + .suggestions {
 }
 
 .suggestions {
-	visibility: hidden;
+	visibility: visible;
 	height: 0;
 	overflow: hidden;
 	margin: 0;

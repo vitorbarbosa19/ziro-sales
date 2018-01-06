@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import renderList from './functions/renderList'
+import filterList from './functions/filterList'
 
 export default class DropDown extends Component {
 	constructor(props) {
@@ -9,12 +11,15 @@ export default class DropDown extends Component {
 		}
 	}
 	getUserInput = (event) => {
-		const filteredSuppliers = this.props.suppliers.filter( (supplier) => {
-			return supplier.toLowerCase().includes(event.target.value.toLowerCase())
-		})
 		this.setState({ 
 			userInput: event.target.value,
-			filter: filteredSuppliers
+			filter: filterList(this.props.suppliers, event.target.value)
+		})
+	}
+	fillInput = (supplierClicked) => {
+		this.setState({ 
+			userInput: supplierClicked,
+			filter: filterList(this.props.suppliers, supplierClicked)
 		})
 	}
 	render() {
@@ -25,9 +30,9 @@ export default class DropDown extends Component {
 					{
 						this.props.uiState !== 'mounting' &&
 						this.state.userInput === '' ?
-						this.props.suppliers.map( (supplier, index) => <li key={index}>{supplier}</li>)
+						renderList(this.props.suppliers, this.fillInput)
 						:
-						this.state.filter.map( (supplier, index) => <li key={index}>{supplier}</li>)
+						renderList(this.state.filter, this.fillInput)
 					}
 				</ul>
 			</div>
