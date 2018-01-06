@@ -6,7 +6,6 @@ const Form = (props) => (
 		<form>
 			<DropDown
 				suppliers={props.suppliers}
-				uiState={props.uiState}
 			/>
 		</form>
 	</div>

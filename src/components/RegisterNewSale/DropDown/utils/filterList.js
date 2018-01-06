@@ -1,6 +1,6 @@
-const filterList = (suppliers, valueToMatch) => {
-	return suppliers.filter( (supplier) => {
-		return supplier.toLowerCase().includes(valueToMatch.toLowerCase())
+const filterList = (items, valueToMatch) => {
+	return items.filter( (item) => {
+		return item.toLowerCase().includes(valueToMatch.toLowerCase())
 	})
 }
 

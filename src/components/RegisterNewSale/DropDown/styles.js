@@ -3,31 +3,28 @@ export const container = {
 	flexDirection: 'column'
 }
 
-export const list = {
-	margin: '0',
-	padding: '0',
-	listStyle: 'none',
-	fontSize: '1.6rem',
+export const dropdown = {
+	position: 'relative'
 }
 
 export const dropdownOff = {
+	position: 'absolute',
 	height: '0',
-	overflow: 'hidden',
-	transition: 'height 0.2s ease'
+	overflow: 'hidden'
 }
 
 export const dropdownOn = {
-	height: '400px',
+	position: 'absolute',
+	height: '200px',
 	overflowX: 'hidden',
 	overflowY: 'scroll',
-	transition: 'height 0.2s ease',
-	position: 'relative',
-	zIndex: '1',
-	backgroundColor: 'rgba(0,0,0,0.1)',
+	transition: 'height 0.15s ease-in-out',
+	width: '100%',
+	backgroundColor: 'rgba(250,250,250,1)',
 }
 
 export const overlayOn = {
-	position: 'absolute',
+	position: 'fixed',
 	top: '0',
 	left: '0',
 	width: '100%',
@@ -37,4 +34,13 @@ export const overlayOn = {
 
 export const overlayOff = {
 	display: 'none'
+}
+
+export const list = {
+	position: 'relative',
+	margin: '0',
+	padding: '0',
+	listStyle: 'none',
+	fontSize: '1.6rem',
+	overflow: 'hidden'
 }
