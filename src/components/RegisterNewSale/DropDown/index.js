@@ -3,7 +3,7 @@ import getUserInput from './methods/getUserInput'
 import fillInput from './methods/fillInput'
 import toggleDropDown from './methods/toggleDropDown'
 import renderList from './utils/renderList'
-import { container, list, dropdownOn, dropdownOff, overlayOn, overlayOff } from './styles'
+import { container, dropdownOn, dropdownOff, overlayOn, overlayOff } from './styles'
 
 export default class DropDown extends Component {
 	constructor(props) {
@@ -20,6 +20,8 @@ export default class DropDown extends Component {
 	toggleDropDown = toggleDropDown(this)
 	/* ------ */
 	render() {
+		if (this.props.uiState !== 'idle')
+			return null
 		return (
 			<div style={container}>
 				<input
@@ -29,15 +31,15 @@ export default class DropDown extends Component {
 					onFocus={this.toggleDropDown}
 				/>
 				<div style={this.state.isDropDownOpen ? dropdownOn : dropdownOff}>
-					<ul style={list}>
-						{
-							this.props.uiState !== 'mounting' &&
+					{
+						this.state.isDropDownOpen ?
 							this.state.userInput === '' ?
 							renderList(this.props.suppliers, this.fillInput)
 							:
 							renderList(this.state.filter, this.fillInput)
-						}
-					</ul>
+						:
+						null
+					}
 				</div>
 				<div style={this.state.isDropDownOpen ? overlayOn : overlayOff} onClick={this.toggleDropDown}></div>
 			</div>
