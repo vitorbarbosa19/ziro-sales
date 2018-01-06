@@ -2,15 +2,12 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Form from './Form'
 import { initialState, transition } from './functions/stateMachine'
-import handleChange from './functions/handleChange'
 
 export default class RegisterNewSale extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			search: '',
 			suppliers: [],
-			filter: [],
 			uiState: initialState
 		}
 	}
@@ -29,15 +26,11 @@ export default class RegisterNewSale extends Component {
 
 	changeUiState = transition(this)
 
-	inputChange = handleChange(this)
-
 	render() {
 		return (
 			<Form 
-				search={this.state.search}
 				suppliers={this.state.suppliers}
-				filter={this.state.filter}
-				inputChange={this.inputChange}
+				uiState={this.state.uiState}
 			/>
 		)
 	}
