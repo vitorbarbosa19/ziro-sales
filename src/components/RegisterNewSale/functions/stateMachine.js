@@ -6,7 +6,7 @@ const machine = {
 
 export const initialState = 'mounting'
 
-export const transition = that => action => {
+export const transition = (that) => (action) => {
 	that.setState( (prevState) => {
 		return { uiState: machine[prevState.uiState][action] }
 	})

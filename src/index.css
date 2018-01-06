@@ -23,6 +23,7 @@ a {
 
 ul {
 	font-size: 2.1rem;
+	margin: 0;
 	padding: 0;
 	list-style: none;
 }
@@ -31,25 +32,4 @@ ul {
 	html {
 		font-size: 55%;
 	}
-}
-
-/*---------*/
-
-input[type='text']:focus + .suggestions {
-	visibility: visible;
-	height: 400px;
-}
-
-.suggestions {
-	visibility: visible;
-	height: 0;
-	overflow: hidden;
-	margin: 0;
-	background-color: grey;
-	transition: height 0.15s ease;
-}
-
-.field-suppliers {
-	display: flex;
-	flex-direction: column;
 }

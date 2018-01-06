@@ -1,40 +1,45 @@
 import React, { Component } from 'react'
-import renderList from './functions/renderList'
-import filterList from './functions/filterList'
+import getUserInput from './methods/getUserInput'
+import fillInput from './methods/fillInput'
+import toggleDropDown from './methods/toggleDropDown'
+import renderList from './utils/renderList'
+import { container, list, dropdownOn, dropdownOff, overlayOn, overlayOff } from './styles'
 
 export default class DropDown extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
 			userInput: '',
-			filter: []
+			filter: [],
+			isDropDownOpen: false
 		}
 	}
-	getUserInput = (event) => {
-		this.setState({ 
-			userInput: event.target.value,
-			filter: filterList(this.props.suppliers, event.target.value)
-		})
-	}
-	fillInput = (supplierClicked) => {
-		this.setState({ 
-			userInput: supplierClicked,
-			filter: filterList(this.props.suppliers, supplierClicked)
-		})
-	}
+	/* methods */
+	getUserInput = getUserInput(this)
+	fillInput = fillInput(this)
+	toggleDropDown = toggleDropDown(this)
+	/* ------ */
 	render() {
 		return (
-			<div className='field-suppliers'>
-				<input type='text' value={this.state.userInput} onChange={this.getUserInput} />
-				<ul className='suggestions'>
-					{
-						this.props.uiState !== 'mounting' &&
-						this.state.userInput === '' ?
-						renderList(this.props.suppliers, this.fillInput)
-						:
-						renderList(this.state.filter, this.fillInput)
-					}
-				</ul>
+			<div style={container}>
+				<input
+					type='text'
+					value={this.state.userInput}
+					onChange={this.getUserInput}
+					onFocus={this.toggleDropDown}
+				/>
+				<div style={this.state.isDropDownOpen ? dropdownOn : dropdownOff}>
+					<ul style={list}>
+						{
+							this.props.uiState !== 'mounting' &&
+							this.state.userInput === '' ?
+							renderList(this.props.suppliers, this.fillInput)
+							:
+							renderList(this.state.filter, this.fillInput)
+						}
+					</ul>
+				</div>
+				<div style={this.state.isDropDownOpen ? overlayOn : overlayOff} onClick={this.toggleDropDown}></div>
 			</div>
 		)
 	}
