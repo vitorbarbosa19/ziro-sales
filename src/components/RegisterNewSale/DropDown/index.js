@@ -34,6 +34,7 @@ export default class DropDown extends Component {
 				<input
 					style={this.state.isDropDownOpen ? inputFocus : input}
 					type={validateInputType(this.props.type)}
+					placeholder={this.props.placeholder}
 					value={this.state.userInput}
 					onChange={this.getUserInput}
 					onFocus={this.toggleDropDown}

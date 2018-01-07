@@ -68,8 +68,8 @@ export const input = {
 	padding: '8px 20px',
 	height: '20px',
 	backgroundColor: 'rgba(48,62,77,0.02)',
-	boxShadow: `0px 2px 11px 0px rgba(48,62,77,0.10), 0px 2px 22px 0px rgba(48,62,77,0.08), 
-	0px 2px 33px 0px rgba(48,62,77,0.06), 0px 2px 44px 0px rgba(48,62,77,0.04)`,
+	boxShadow: `0px 2px 10px 0px rgba(48,62,77,0.08), 0px 2px 20px 0px rgba(48,62,77,0.06), 
+	0px 2px 30px 0px rgba(48,62,77,0.04), 0px 2px 40px 0px rgba(48,62,77,0.02)`,
 	fontSize: '1.3rem',
 	color: 'rgba(48,62,77,0.8)',
 	fontWeight: '700'
