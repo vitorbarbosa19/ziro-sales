@@ -29,6 +29,7 @@ export default class DropDown extends Component {
 					onChange={this.getUserInput}
 					onFocus={this.toggleDropDown}
 				/>
+				<label>{this.props.errorMessage}</label>
 				<div style={dropdown}>
 					<div style={this.state.isDropDownOpen ? dropdownOn : dropdownOff}>
 						{

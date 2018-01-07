@@ -3,6 +3,7 @@ import axios from 'axios'
 import Form from './Form'
 import { initialState, transition } from './utils/stateMachine'
 import saveSupplier from './methods/saveSupplier'
+import submitForm from './methods/submitForm'
 
 export default class RegisterNewSale extends Component {
 	constructor(props) {
@@ -13,7 +14,9 @@ export default class RegisterNewSale extends Component {
 			/* presentational data */
 			suppliers: [],
 			/* user input data */
-			input_supplier: ''
+			input_supplier: '',
+			/* ui error message */
+			error_supplier: ''
 		}
 	}
 
@@ -31,12 +34,15 @@ export default class RegisterNewSale extends Component {
 	/* methods */
 	changeUiState = transition(this)
 	saveSupplier = saveSupplier(this)
+	submitForm = submitForm(this)
 	/* ------ */
 	render() {
 		return (
 			<Form 
 				suppliers={this.state.suppliers}
 				saveSupplier={this.saveSupplier}
+				errorSupplier={this.state.error_supplier}
+				submitForm={this.submitForm}
 				uiState={this.state.uiState}
 			/>
 		)

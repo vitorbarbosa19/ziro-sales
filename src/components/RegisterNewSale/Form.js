@@ -3,13 +3,16 @@ import DropDown from './DropDown/index'
 
 const Form = (props) => (
 	<div>
-		<form>
+		<form id='newSaleForm' onSubmit={props.submitForm}>
 			{/* supplier field */}
 			<DropDown
-				type='ju'
+				type='text'
 				updateParent={props.saveSupplier}
 				listToDisplay={props.suppliers}
+				errorMessage={props.errorSupplier}
 			/>
+			{/* submit button */}
+			<input type='submit' />
 		</form>
 	</div>
 )
