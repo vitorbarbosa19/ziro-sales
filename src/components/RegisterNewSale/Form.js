@@ -3,7 +3,7 @@ import DropDown from './DropDown/index'
 
 const Form = (props) => (
 	<div>
-		<form id='newSaleForm' onSubmit={props.submitForm}>
+		<form onSubmit={props.submitForm}>
 			{/* supplier field */}
 			<DropDown
 				type='text'

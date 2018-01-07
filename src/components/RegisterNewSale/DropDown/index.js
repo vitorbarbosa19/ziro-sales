@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import getUserInput from './methods/getUserInput'
 import fillInput from './methods/fillInput'
 import toggleDropDown from './methods/toggleDropDown'
+import clearForm from './methods/clearForm'
 import renderList from './utils/renderList'
 import validateInputType from './utils/validateInputType'
-import { container, dropdown, dropdownOn, dropdownOff, overlayOn, overlayOff } from './styles'
+import { container, dropdown, dropdownOn, dropdownOff, overlayOn, overlayOff,
+input, inputFocus, error } from './styles'
 
 export default class DropDown extends Component {
 	constructor(props) {
@@ -16,24 +18,21 @@ export default class DropDown extends Component {
 		}
 	}
 	componentDidUpdate() {
-		if (this.state.userInput !== '' && this.props.formSubmit) {
-			this.setState({
-				userInput: '',
-				filter: [],
-				isDropDownOpen: false
-			})
-		}
+		if (this.state.userInput !== '' && this.props.formSubmit)
+			this.clearForm()
 	}
 	/* methods */
 	getUserInput = getUserInput(this)
 	fillInput = fillInput(this)
 	toggleDropDown = toggleDropDown(this)
+	clearForm = clearForm(this)
 	/* ------ */
 	render() {
 		return (
 			<div style={container}>
-				<label>{this.props.errorMessage}</label>
+				<label style={error}>{this.props.errorMessage}</label>
 				<input
+					style={this.state.isDropDownOpen ? inputFocus : input}
 					type={validateInputType(this.props.type)}
 					value={this.state.userInput}
 					onChange={this.getUserInput}
