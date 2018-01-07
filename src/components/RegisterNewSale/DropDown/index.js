@@ -32,13 +32,13 @@ export default class DropDown extends Component {
 	render() {
 		return (
 			<div style={container}>
+				<label>{this.props.errorMessage}</label>
 				<input
 					type={validateInputType(this.props.type)}
 					value={this.state.userInput}
 					onChange={this.getUserInput}
 					onFocus={this.toggleDropDown}
 				/>
-				<label>{this.props.errorMessage}</label>
 				<div style={dropdown}>
 					<div style={this.state.isDropDownOpen ? dropdownOn : dropdownOff}>
 						{

@@ -1,6 +1,10 @@
+/* Syntax -> machine = { state: { action: state } } */
+/* The machine is an object whose keys are possible states */
+/* The states are also objects whose keys are actions and values are next states */
 const machine = {
-	idle: {},
+	idle: { FORM_SUBMIT: 'submitting' },
 	mounting: { FETCH_OK: 'idle', FETCH_ERROR: 'error' },
+	submitting: { SUBMIT_OK: 'idle', SUBMIT_ERROR: 'error' },
 	error: {},
 }
 

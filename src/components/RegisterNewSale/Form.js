@@ -10,7 +10,7 @@ const Form = (props) => (
 				updateParent={props.saveSupplier}
 				listToDisplay={props.suppliers}
 				errorMessage={props.errorSupplier}
-				formSubmit={false}
+				formSubmit={props.uiState === 'submitting'}
 			/>
 			{/* submit button */}
 			<input type='submit' />
