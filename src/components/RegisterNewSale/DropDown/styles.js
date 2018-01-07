@@ -8,7 +8,7 @@ export const container = {
 export const dropdown = {
 	position: 'relative',
 	/* aesthetics */
-	margin: '0 12px',
+	margin: '0 12px'
 }
 
 export const dropdownOff = {
@@ -18,6 +18,7 @@ export const dropdownOff = {
 }
 
 export const dropdownOn = {
+	zIndex: '2',
 	position: 'absolute',
 	height: '200px',
 	overflowX: 'hidden',
@@ -31,18 +32,16 @@ export const dropdownOn = {
 	fontWeight: '700',
 	backgroundColor: '#FAFBFB',
 	boxShadow: `0px 3px 10px 0px rgba(48,62,77,0.10), 0px 3px 20px 0px rgba(48,62,77,0.08), 
-	0px 3px 30px 0px rgba(48,62,77,0.06), 0px 3px 40px 0px rgba(48,62,77,0.04)`,
-	
+	0px 3px 30px 0px rgba(48,62,77,0.06), 0px 3px 40px 0px rgba(48,62,77,0.04)`
 }
 
 export const overlayOn = {
+	zIndex: '1',
 	position: 'fixed',
 	top: '0',
 	left: '0',
 	width: '100%',
-	height: '100%',
-	zIndex: '-1'
-
+	height: '100%'
 }
 
 export const overlayOff = {
@@ -97,23 +96,3 @@ export const error = {
 	fontWeight: '700',
 	color: '#F16B6F'
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

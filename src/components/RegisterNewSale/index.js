@@ -4,6 +4,7 @@ import Form from './Form'
 import { initialState, transition } from './utils/stateMachine'
 import saveSupplier from './methods/saveSupplier'
 import saveReseller from './methods/saveReseller'
+import savePayMethod from './methods/savePayMethod'
 import submitForm from './methods/submitForm'
 
 export default class RegisterNewSale extends Component {
@@ -15,12 +16,15 @@ export default class RegisterNewSale extends Component {
 			/* presentational data */
 			suppliers: [],
 			resellers: [],
+			payMethods: ['Boleto', 'Cheque', 'Crédito', 'Débito', 'Depósito', 'Dinheiro', 'Duplicata'],
 			/* user input data */
 			input_supplier: '',
 			input_reseller: '',
+			input_pay_method: '',
 			/* ui error message */
 			error_supplier: '',
-			error_reseller: ''
+			error_reseller: '',
+			error_pay_method: '',
 		}
 	}
 
@@ -40,7 +44,8 @@ export default class RegisterNewSale extends Component {
 	/* methods */
 	changeUiState = transition(this)
 	saveSupplier = saveSupplier(this)
-	saveReseller= saveReseller(this)
+	saveReseller = saveReseller(this)
+	savePayMethod = savePayMethod(this)
 	submitForm = submitForm(this)
 	/* ------ */
 	render() {
@@ -52,6 +57,9 @@ export default class RegisterNewSale extends Component {
 				resellers={this.state.resellers}
 				saveReseller={this.saveReseller}
 				errorReseller={this.state.error_reseller}
+				payMethods={this.state.payMethods}
+				savePayMethod={this.savePayMethod}
+				errorPayMethod={this.state.error_pay_method}
 				submitForm={this.submitForm}
 				uiState={this.state.uiState}
 			/>
