@@ -15,6 +15,15 @@ export default class DropDown extends Component {
 			isDropDownOpen: false
 		}
 	}
+	componentDidUpdate() {
+		if (this.state.userInput !== '' && this.props.formSubmit) {
+			this.setState({
+				userInput: '',
+				filter: [],
+				isDropDownOpen: false
+			})
+		}
+	}
 	/* methods */
 	getUserInput = getUserInput(this)
 	fillInput = fillInput(this)
