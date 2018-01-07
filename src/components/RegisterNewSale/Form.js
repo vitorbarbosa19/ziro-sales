@@ -6,6 +6,7 @@ const Form = (props) => (
 		<form>
 			{/* supplier field */}
 			<DropDown
+				type='ju'
 				updateParent={props.saveSupplier}
 				listToDisplay={props.suppliers}
 			/>

@@ -3,6 +3,7 @@ import getUserInput from './methods/getUserInput'
 import fillInput from './methods/fillInput'
 import toggleDropDown from './methods/toggleDropDown'
 import renderList from './utils/renderList'
+import validateInputType from './utils/validateInputType'
 import { container, dropdown, dropdownOn, dropdownOff, overlayOn, overlayOff } from './styles'
 
 export default class DropDown extends Component {
@@ -23,7 +24,7 @@ export default class DropDown extends Component {
 		return (
 			<div style={container}>
 				<input
-					type='text'
+					type={validateInputType(this.props.type)}
 					value={this.state.userInput}
 					onChange={this.getUserInput}
 					onFocus={this.toggleDropDown}
