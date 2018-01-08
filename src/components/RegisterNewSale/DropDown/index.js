@@ -3,7 +3,7 @@ import DropDownPanel from './DropDownPanel'
 import getUserInput from './methods/getUserInput'
 import fillInput from './methods/fillInput'
 import toggleDropDown from './methods/toggleDropDown'
-import clearForm from './methods/clearForm'
+import clearInput from './methods/clearInput'
 import validateInputType from './utils/validateInputType'
 import { container, input, inputFocus, error } from './styles'
 
@@ -18,13 +18,13 @@ export default class DropDown extends Component {
 	}
 	componentDidUpdate() {
 		if (this.state.userInput !== '' && this.props.formSubmit)
-			this.clearForm()
+			this.clearInput()
 	}
 	/* methods */
 	getUserInput = getUserInput(this)
 	fillInput = fillInput(this)
 	toggleDropDown = toggleDropDown(this)
-	clearForm = clearForm(this)
+	clearInput = clearInput(this)
 	/* ------ */
 	render() {
 		return (

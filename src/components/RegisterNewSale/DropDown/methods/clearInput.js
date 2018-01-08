@@ -1,4 +1,4 @@
-const clearForm = (that) => () => {
+const clearInput = (that) => () => {
 	that.setState({
 		userInput: '',
 		filter: [],
@@ -6,4 +6,4 @@ const clearForm = (that) => () => {
 	})
 }
 
-export default clearForm
+export default clearInput

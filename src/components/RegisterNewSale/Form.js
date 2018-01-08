@@ -1,5 +1,6 @@
 import React from 'react'
 import DropDown from './DropDown/index'
+import Currency from './Currency/index'
 import { submit } from './styles'
 
 const Form = (props) => (
@@ -33,8 +34,8 @@ const Form = (props) => (
 				formSubmit={props.uiState === 'submitting'}
 			/>
 			{/* value field */}
-			<DropDown
-				type='number'
+			<Currency
+				symbol='R$'
 				placeholder='Valor da venda'
 				updateParent={props.saveValue}
 				errorMessage={props.errorValue}
