@@ -1,3 +1,22 @@
+export const form = {
+	maxWidth: '400px',
+	margin: '0 auto',
+	padding: '0 15%'
+}
+
+export const logo = {
+	marginTop: '40px',
+	display: 'flex',
+	flexDirection: 'column',
+	alignItems: 'center',
+	justifyContent: 'center'
+}
+
+export const title = {
+	textAlign: 'center',
+	color: 'rgba(48,62,77,0.8)'
+}
+
 export const submit = {
 	marginTop: '40px',
 	WebkitAppearance: 'none',

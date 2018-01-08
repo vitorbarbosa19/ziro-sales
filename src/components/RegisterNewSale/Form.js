@@ -1,10 +1,22 @@
 import React from 'react'
+import { Image } from 'cloudinary-react'
 import DropDown from './DropDown/index'
 import Currency from './Currency/index'
-import { submit } from './styles'
+import { form, logo, title, submit } from './styles'
 
 const Form = (props) => (
-	<div>
+	<div style={form}>
+	  <div style={logo}>
+	    <Image
+	      cloudName='ziro'
+	      width='50'
+	      publicId='logo-round_kxn8sa'
+	      version='1508000699'
+	      format='png'
+	      secure='true'
+	    />
+	  </div>
+		<h1 style={title}>Cadastro de vendas 2018</h1>
 		<form onSubmit={props.submitForm}>
 			{/* reseller field */}
 			<DropDown
