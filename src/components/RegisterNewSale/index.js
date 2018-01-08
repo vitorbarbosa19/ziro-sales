@@ -5,6 +5,7 @@ import fetchInitialData from './utils/fetchInitialData'
 import saveSupplier from './methods/saveSupplier'
 import saveReseller from './methods/saveReseller'
 import savePayMethod from './methods/savePayMethod'
+import saveComission from './methods/saveComission'
 import saveValue from './methods/saveValue'
 import submitForm from './methods/submitForm'
 
@@ -23,11 +24,13 @@ export default class RegisterNewSale extends Component {
 			input_reseller: '',
 			input_pay_method: '',
 			input_value: '',
+			input_comission: '',
 			/* ui error message */
 			error_supplier: '',
 			error_reseller: '',
 			error_pay_method: '',
 			error_value: '',
+			error_comission: ''
 		}
 	}
 	async componentDidMount() {
@@ -46,6 +49,7 @@ export default class RegisterNewSale extends Component {
 	saveReseller = saveReseller(this)
 	savePayMethod = savePayMethod(this)
 	saveValue = saveValue(this)
+	saveComission = saveComission(this)
 	submitForm = submitForm(this)
 	/* ------ */
 	render() {
@@ -66,6 +70,9 @@ export default class RegisterNewSale extends Component {
 				/* value */
 				saveValue={this.saveValue}
 				errorValue={this.state.error_value}
+				/* comission */
+				saveComission={this.saveComission}
+				errorComission={this.state.error_comission}
 				/* others */
 				submitForm={this.submitForm}
 				uiState={this.state.uiState}

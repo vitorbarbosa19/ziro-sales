@@ -6,15 +6,6 @@ import { submit } from './styles'
 const Form = (props) => (
 	<div>
 		<form onSubmit={props.submitForm}>
-			{/* supplier field */}
-			<DropDown
-				type='text'
-				placeholder='Fornecedor'
-				updateParent={props.saveSupplier}
-				listToDisplay={props.suppliers}
-				errorMessage={props.errorSupplier}
-				formSubmit={props.uiState === 'submitting'}
-			/>
 			{/* reseller field */}
 			<DropDown
 				type='text'
@@ -22,6 +13,15 @@ const Form = (props) => (
 				updateParent={props.saveReseller}
 				listToDisplay={props.resellers}
 				errorMessage={props.errorReseller}
+				formSubmit={props.uiState === 'submitting'}
+			/>
+			{/* supplier field */}
+			<DropDown
+				type='text'
+				placeholder='Fornecedor'
+				updateParent={props.saveSupplier}
+				listToDisplay={props.suppliers}
+				errorMessage={props.errorSupplier}
 				formSubmit={props.uiState === 'submitting'}
 			/>
 			{/* payMethod field */}
@@ -39,6 +39,14 @@ const Form = (props) => (
 				placeholder='Valor da venda'
 				updateParent={props.saveValue}
 				errorMessage={props.errorValue}
+				formSubmit={props.uiState === 'submitting'}
+			/>
+			{/* comission field */}
+			<Currency
+				symbol='%'
+				placeholder='Comissão'
+				updateParent={props.saveComission}
+				errorMessage={props.errorComission}
 				formSubmit={props.uiState === 'submitting'}
 			/>
 			{/* submit button */}
