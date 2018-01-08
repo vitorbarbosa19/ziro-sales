@@ -1,5 +1,6 @@
 const submitForm = (that) => async (event) => {
 	event.preventDefault()
+	/* validate user inputs */
 	const supplierExists = that.state.input_supplier === that.state.suppliers.find( (supplier) => {
 		return supplier === that.state.input_supplier
 	})
@@ -9,7 +10,9 @@ const submitForm = (that) => async (event) => {
 	const payMethodExists = that.state.input_pay_method === that.state.payMethods.find( (payMethod) => {
 		return payMethod === that.state.input_pay_method
 	})
-	if (supplierExists && resellerExists && payMethodExists) {
+	const valueIsValid = that.state.input_value !== ''
+	/* if validated, then submit, else notify of errors */
+	if (supplierExists && resellerExists && payMethodExists && valueIsValid) {
 		that.changeUiState('FORM_SUBMIT')
 		await setTimeout( () => alert('submitted'), 1000)
 		that.setState({
@@ -34,6 +37,10 @@ const submitForm = (that) => async (event) => {
 			that.setState({ error_pay_method: '' })
 		:
 			that.setState({ error_pay_method: 'Esse meio de pagamento não está cadastrado' })
+		valueIsValid ?
+			that.setState({ error_value: '' })
+		:
+			that.setState({ error_value: 'Valor inválido' })
 	}
 }
 

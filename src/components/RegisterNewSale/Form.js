@@ -32,6 +32,14 @@ const Form = (props) => (
 				errorMessage={props.errorPayMethod}
 				formSubmit={props.uiState === 'submitting'}
 			/>
+			{/* value field */}
+			<DropDown
+				type='number'
+				placeholder='Valor da venda'
+				updateParent={props.saveValue}
+				errorMessage={props.errorValue}
+				formSubmit={props.uiState === 'submitting'}
+			/>
 			{/* submit button */}
 			<input style={submit} type='submit' value='Enviar' />
 		</form>

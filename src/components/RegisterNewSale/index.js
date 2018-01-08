@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import Form from './Form'
 import { initialState, transition } from './utils/stateMachine'
+import fetchInitialData from './utils/fetchInitialData'
 import saveSupplier from './methods/saveSupplier'
 import saveReseller from './methods/saveReseller'
 import savePayMethod from './methods/savePayMethod'
+import saveValue from './methods/saveValue'
 import submitForm from './methods/submitForm'
 
 export default class RegisterNewSale extends Component {
@@ -21,20 +22,18 @@ export default class RegisterNewSale extends Component {
 			input_supplier: '',
 			input_reseller: '',
 			input_pay_method: '',
+			input_value: '',
 			/* ui error message */
 			error_supplier: '',
 			error_reseller: '',
 			error_pay_method: '',
+			error_value: '',
 		}
 	}
-
 	async componentDidMount() {
 		try {
-			const supplierSheet = await axios.get(process.env.SPREADSHEET_URL)
-			const resellerSheet = await axios.get(process.env.SPREADSHEET_URL)
-			this.changeUiState('FETCH_OK')
-			const suppliers = supplierSheet.data.values.map( (supplierInfo) => supplierInfo[0] ).splice(1).sort()
-			const resellers = resellerSheet.data.values.map( (resellerInfo) => resellerInfo[0] ).splice(1).sort()
+			const { suppliers, resellers, status } = await fetchInitialData()
+			this.changeUiState(status)
 			this.setState({ suppliers, resellers })
 		} catch (error) {
 			console.log(error)
@@ -46,20 +45,28 @@ export default class RegisterNewSale extends Component {
 	saveSupplier = saveSupplier(this)
 	saveReseller = saveReseller(this)
 	savePayMethod = savePayMethod(this)
+	saveValue = saveValue(this)
 	submitForm = submitForm(this)
 	/* ------ */
 	render() {
 		return (
 			<Form 
+				/* suppliers */
 				suppliers={this.state.suppliers}
 				saveSupplier={this.saveSupplier}
 				errorSupplier={this.state.error_supplier}
+				/* resellers */
 				resellers={this.state.resellers}
 				saveReseller={this.saveReseller}
 				errorReseller={this.state.error_reseller}
+				/* payMethods */
 				payMethods={this.state.payMethods}
 				savePayMethod={this.savePayMethod}
 				errorPayMethod={this.state.error_pay_method}
+				/* value */
+				saveValue={this.saveValue}
+				errorValue={this.state.error_value}
+				/* others */
 				submitForm={this.submitForm}
 				uiState={this.state.uiState}
 			/>

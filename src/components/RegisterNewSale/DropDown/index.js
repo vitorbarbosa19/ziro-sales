@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
+import DropDownPanel from './DropDownPanel'
 import getUserInput from './methods/getUserInput'
 import fillInput from './methods/fillInput'
 import toggleDropDown from './methods/toggleDropDown'
 import clearForm from './methods/clearForm'
-import renderList from './utils/renderList'
 import validateInputType from './utils/validateInputType'
-import { container, dropdown, dropdownOn, dropdownOff, overlayOn, overlayOff,
-input, inputFocus, error } from './styles'
+import { container, input, inputFocus, error } from './styles'
 
 export default class DropDown extends Component {
 	constructor(props) {
@@ -39,20 +38,19 @@ export default class DropDown extends Component {
 					onChange={this.getUserInput}
 					onFocus={this.toggleDropDown}
 				/>
-				<div style={dropdown}>
-					<div style={this.state.isDropDownOpen ? dropdownOn : dropdownOff}>
-						{
-							this.state.isDropDownOpen ?
-								this.state.userInput === '' ?
-								renderList(this.props.listToDisplay, this.fillInput)
-								:
-								renderList(this.state.filter, this.fillInput)
-							:
-							null
-						}
-					</div>
-				</div>
-				<div style={this.state.isDropDownOpen ? overlayOn : overlayOff} onClick={this.toggleDropDown}></div>
+				{
+					this.props.listToDisplay ?
+						<DropDownPanel
+							isDropDownOpen={this.state.isDropDownOpen}
+							userInput={this.state.userInput}
+							listToDisplay={this.props.listToDisplay}
+							fillInput={this.fillInput}
+							filter={this.state.filter}
+							toggleDropDown={this.toggleDropDown}
+						/>
+					:
+						null
+				}
 			</div>
 		)
 	}
