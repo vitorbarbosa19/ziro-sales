@@ -13,7 +13,8 @@ export default class DropDown extends Component {
 		this.state = {
 			userInput: '',
 			filter: [],
-			isDropDownOpen: false
+			isDropDownOpen: false,
+			inputIsNotEmpty: false,
 		}
 	}
 	componentDidUpdate() {
@@ -31,7 +32,7 @@ export default class DropDown extends Component {
 			<div style={container}>
 				<label style={error}>{this.props.errorMessage}</label>
 				<input
-					style={this.state.isDropDownOpen ? inputFocus : input}
+					style={this.state.isDropDownOpen || this.state.inputIsNotEmpty ? inputFocus : input}
 					type={validateInputType(this.props.type)}
 					placeholder={this.props.placeholder}
 					value={this.state.userInput}

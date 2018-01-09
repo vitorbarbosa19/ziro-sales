@@ -5,7 +5,8 @@ const fillInput = (that) => (supplierClicked) => {
 		that.toggleDropDown()
 		that.setState({
 			userInput: supplierClicked,
-			filter: filterList(that.props.listToDisplay, supplierClicked)
+			filter: filterList(that.props.listToDisplay, supplierClicked),
+			inputIsNotEmpty: true,
 		})
 	}
 

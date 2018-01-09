@@ -18,7 +18,7 @@ export const title = {
 }
 
 export const submit = {
-	marginTop: '40px',
+	marginTop: '30px',
 	WebkitAppearance: 'none',
 	MozAppearance: 'none',
 	width: '100%',

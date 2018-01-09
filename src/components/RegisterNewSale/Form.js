@@ -70,8 +70,8 @@ const Form = (props) => (
 					{ name: 'Online', component: WifiSvg },
 					{ name: 'Offline', component: WifiOffSvg }
 				]}
-				updateParent={props.saveComission}
-				errorMessage={props.errorComission}
+				updateParent={props.saveType}
+				errorMessage={props.errorType}
 				formSubmit={props.uiState === 'submitting'}
 			/>
 			{/* submit button */}

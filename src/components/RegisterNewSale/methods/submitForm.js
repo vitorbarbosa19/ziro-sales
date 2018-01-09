@@ -12,21 +12,24 @@ const submitForm = (that) => async (event) => {
 	})
 	const valueIsValid = Boolean(parseFloat(that.state.input_value)) !== false
 	const comissionIsValid = Boolean(parseFloat(that.state.input_comission)) !== false
+	const typeIsValid = Boolean(that.state.input_type) !== false
 	/* if validated, then submit, else notify of errors */
-	if (supplierExists && resellerExists && payMethodExists && valueIsValid && comissionIsValid) {
+	if (supplierExists && resellerExists && payMethodExists && valueIsValid && comissionIsValid && typeIsValid) {
 		that.changeUiState('FORM_SUBMIT')
-		await setTimeout( () => alert('submitted'), 1000)
+		await setTimeout( () => alert('Formulário enviado com sucesso!'), 1000)
 		that.setState({
 			input_supplier: '',
 			input_reseller: '',
 			input_pay_method: '',
 			input_value: '',
 			input_comission: '',
+			input_type: '',
 			error_supplier: '',
 			error_reseller: '',
 			error_pay_method: '',
 			error_value: '',
-			error_comission: ''
+			error_comission: '',
+			error_type: ''
 		})
 		that.changeUiState('SUBMIT_OK')
 	} else {
@@ -50,6 +53,10 @@ const submitForm = (that) => async (event) => {
 			that.setState({ error_comission: '' })
 		:
 			that.setState({ error_comission: 'Valor inválido' })
+		typeIsValid ?
+			that.setState({ error_type: '' })
+		:
+			that.setState({ error_type: 'Valor inválido' })
 	}
 }
 

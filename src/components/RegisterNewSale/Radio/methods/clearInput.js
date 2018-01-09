@@ -1,9 +1,6 @@
 const clearInput = (that) => () => {
 	that.setState({
-		userInput: '',
-		filter: [],
-		isDropDownOpen: false,
-		inputIsNotEmpty: false
+		selected: ''
 	})
 }
 

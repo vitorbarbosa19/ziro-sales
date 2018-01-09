@@ -1,6 +1,7 @@
 const clearInput = (that) => () => {
 	that.setState({
-		userInput: ''
+		userInput: '',
+		hasFocus: false
 	})
 }
 
