@@ -11,11 +11,11 @@ export const input = {
 	WebkitAppearance: 'none',
 	MozAppearance: 'none',
 	border: 'none',
-	borderRadius: '20px',
-	padding: '8px 20px',
-	height: '20px',
-	backgroundColor: 'rgba(48,62,77,0.02)',
-	fontSize: '1.3rem',
+	borderRadius: '25px',
+	padding: '12px 25px',
+	height: '22px',
+	backgroundColor: 'rgba(48,62,77,0.025)',
+	fontSize: '1.5rem',
 	color: 'rgba(48,62,77,0.8)',
 	fontWeight: '700'
 }
@@ -28,18 +28,18 @@ export const inputFocus = {
 	WebkitAppearance: 'none',
 	MozAppearance: 'none',
 	border: 'none',
-	borderRadius: '20px',
-	padding: '8px 20px',
-	height: '20px',
-	backgroundColor: 'rgba(48,62,77,0.02)',
-	fontSize: '1.3rem',
+	borderRadius: '25px',
+	padding: '12px 25px',
+	height: '22px',
+	backgroundColor: 'rgba(48,62,77,0.025)',
+	fontSize: '1.5rem',
 	color: 'rgba(48,62,77,0.8)',
 	fontWeight: '700'
 }
 
 export const error = {
 	padding: '8px 8px 10px',
-	fontSize: '1.2rem',
+	fontSize: '1.4rem',
 	fontWeight: '700',
 	color: '#F16B6F'
 }

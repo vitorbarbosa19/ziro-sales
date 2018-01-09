@@ -25,7 +25,7 @@ export const submit = {
 	border: 'none',
 	borderRadius: '20px',
 	padding: '10px 25px',
-	fontSize: '1.2rem',
+	fontSize: '1.4rem',
 	fontWeight: '700',
 	color: '#FFF',
 	backgroundColor: 'rgba(48,62,77,0.8)',

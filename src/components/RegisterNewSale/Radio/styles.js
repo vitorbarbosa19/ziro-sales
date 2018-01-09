@@ -21,14 +21,14 @@ export const radioNotSelected = {
 	width: '95%',
 	padding: '20px 0',
 	borderRadius: '5px',
-	backgroundColor: 'rgba(48,62,77,0.02)'
+	backgroundColor: 'rgba(48,62,77,0.025)'
 }
 
 export const radioSelected = {
 	width: '95%',
 	padding: '20px 0',
 	borderRadius: '5px',
-	backgroundColor: 'rgba(48,62,77,0.02)',
+	backgroundColor: 'rgba(48,62,77,0.025)',
 	color: 'rgba(48,62,77,0.8)',
 	boxShadow: `0px 0px 10px 0px rgba(48,62,77,0.08), 0px 0px 20px 0px rgba(48,62,77,0.06), 
 	0px 0px 30px 0px rgba(48,62,77,0.04), 0px 0px 40px 0px rgba(48,62,77,0.02)`
@@ -36,7 +36,7 @@ export const radioSelected = {
 
 export const name = {
 	margin: '0',
-	fontSize: '1.2rem'
+	fontSize: '1.4rem'
 }
 
 export const radio = {
@@ -46,7 +46,7 @@ export const radio = {
 
 export const error = {
 	padding: '8px 8px 10px',
-	fontSize: '1.2rem',
+	fontSize: '1.4rem',
 	fontWeight: '700',
 	color: '#F16B6F'
 }

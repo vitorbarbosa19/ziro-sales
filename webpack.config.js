@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const path = require('path')
-const spreadsheetUrl = require('./credentials')
+const { suppliers, resellers } = require('./credentials')
 
 const config = {
 	entry: './src/index.js',
@@ -38,8 +38,8 @@ const config = {
 		new HtmlWebpackPlugin({ template: './src/index.html' }),
 		new webpack.DefinePlugin({
 			'process.env': {
-				SPREADSHEET_URL: JSON.stringify(spreadsheetUrl),
-				NODE_ENV: JSON.stringify('production')
+				SUPPLIERS_SHEET_URL: JSON.stringify(suppliers),
+				RESELLERS_SHEET_URL: JSON.stringify(resellers)
 			}
 		})
 	]
@@ -47,7 +47,15 @@ const config = {
 
 if (process.env.NODE_ENV === 'production') {
 	config.plugins.push(
-		new webpack.optimize.UglifyJsPlugin()
+		new webpack.optimize.UglifyJsPlugin(),
+		new webpack.optimize.ModuleConcatenationPlugin(),
+		new webpack.DefinePlugin({
+			'process.env': {
+				SUPPLIERS_SHEET_URL: JSON.stringify(suppliers),
+				RESELLERS_SHEET_URL: JSON.stringify(resellers),
+				NODE_ENV: JSON.stringify('production')
+			}
+		})
 	)
 }
 

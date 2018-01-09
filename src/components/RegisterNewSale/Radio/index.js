@@ -31,7 +31,7 @@ export default class Radio extends Component {
 										style={this.state.selected === option.name ? radioSelected : radioNotSelected}
 										htmlFor={option.name}
 									>
-										{option.component()}
+										{option.component(27, 27)}
 										<p style={name}>{option.name}</p>
 									</label>
 									<input
