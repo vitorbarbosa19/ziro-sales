@@ -2,6 +2,9 @@ import React from 'react'
 import { Image } from 'cloudinary-react'
 import DropDown from './DropDown/index'
 import Currency from './Currency/index'
+import Radio from './Radio/index'
+import WifiSvg from '../../assets/WifiSvg'
+import WifiOffSvg from '../../assets/WifiOffSvg'
 import { form, logo, title, submit } from './styles'
 
 const Form = (props) => (
@@ -9,7 +12,7 @@ const Form = (props) => (
 	  <div style={logo}>
 	    <Image
 	      cloudName='ziro'
-	      width='50'
+	      width='45'
 	      publicId='logo-round_kxn8sa'
 	      version='1508000699'
 	      format='png'
@@ -57,6 +60,16 @@ const Form = (props) => (
 			<Currency
 				symbol='%'
 				placeholder='Comissão'
+				updateParent={props.saveComission}
+				errorMessage={props.errorComission}
+				formSubmit={props.uiState === 'submitting'}
+			/>
+			{/* type field */}
+			<Radio
+				options={[
+					{ name: 'Online', component: WifiSvg },
+					{ name: 'Offline', component: WifiOffSvg }
+				]}
 				updateParent={props.saveComission}
 				errorMessage={props.errorComission}
 				formSubmit={props.uiState === 'submitting'}

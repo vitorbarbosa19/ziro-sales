@@ -20,6 +20,7 @@ export const title = {
 export const submit = {
 	marginTop: '40px',
 	WebkitAppearance: 'none',
+	MozAppearance: 'none',
 	width: '100%',
 	border: 'none',
 	borderRadius: '20px',
