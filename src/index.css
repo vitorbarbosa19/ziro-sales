@@ -9,12 +9,6 @@ body {
 	margin: 0;
 }
 
-@media (max-width: 600px) {
-	html {
-		font-size: 55%;
-	}
-}
-
 input::placeholder {
 	color: rgba(48,62,77,0.3);
 }

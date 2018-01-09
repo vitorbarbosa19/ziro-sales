@@ -21,7 +21,9 @@ export default class Radio extends Component {
 	render() {
 		return (
 			<div style={container}>
-				<label style={error}>{this.props.errorMessage}</label>
+				<label style={error}>
+					{this.props.errorMessage ? this.props.errorIcon(16, 16) : null} &nbsp; {this.props.errorMessage}
+				</label>
 				<div style={list} onChange={this.getUserInput}>
 					{
 						this.props.options.map( (option, index) => {

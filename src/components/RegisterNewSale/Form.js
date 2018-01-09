@@ -5,6 +5,7 @@ import Currency from './Currency/index'
 import Radio from './Radio/index'
 import WifiSvg from '../../assets/WifiSvg'
 import WifiOffSvg from '../../assets/WifiOffSvg'
+import AlertSvg from '../../assets/AlertSvg'
 import { form, logo, title, submit } from './styles'
 
 const Form = (props) => (
@@ -28,6 +29,7 @@ const Form = (props) => (
 				updateParent={props.saveReseller}
 				listToDisplay={props.resellers}
 				errorMessage={props.errorReseller}
+				errorIcon={AlertSvg}
 				formSubmit={props.uiState === 'submitting'}
 			/>
 			{/* supplier field */}
@@ -37,6 +39,7 @@ const Form = (props) => (
 				updateParent={props.saveSupplier}
 				listToDisplay={props.suppliers}
 				errorMessage={props.errorSupplier}
+				errorIcon={AlertSvg}
 				formSubmit={props.uiState === 'submitting'}
 			/>
 			{/* payMethod field */}
@@ -46,6 +49,7 @@ const Form = (props) => (
 				updateParent={props.savePayMethod}
 				listToDisplay={props.payMethods}
 				errorMessage={props.errorPayMethod}
+				errorIcon={AlertSvg}
 				formSubmit={props.uiState === 'submitting'}
 			/>
 			{/* value field */}
@@ -54,6 +58,7 @@ const Form = (props) => (
 				placeholder='Valor da venda'
 				updateParent={props.saveValue}
 				errorMessage={props.errorValue}
+				errorIcon={AlertSvg}
 				formSubmit={props.uiState === 'submitting'}
 			/>
 			{/* comission field */}
@@ -62,6 +67,7 @@ const Form = (props) => (
 				placeholder='Comissão'
 				updateParent={props.saveComission}
 				errorMessage={props.errorComission}
+				errorIcon={AlertSvg}
 				formSubmit={props.uiState === 'submitting'}
 			/>
 			{/* type field */}
@@ -72,6 +78,7 @@ const Form = (props) => (
 				]}
 				updateParent={props.saveType}
 				errorMessage={props.errorType}
+				errorIcon={AlertSvg}
 				formSubmit={props.uiState === 'submitting'}
 			/>
 			{/* submit button */}

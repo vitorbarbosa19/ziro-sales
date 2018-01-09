@@ -19,7 +19,7 @@ export default class RegisterNewSale extends Component {
 			/* presentational data */
 			suppliers: [],
 			resellers: [],
-			payMethods: ['Boleto', 'Cheque', 'Crédito', 'Débito', 'Depósito', 'Dinheiro', 'Duplicata'],
+			payMethods: ['Boleto', 'Cheque', 'Crédito', 'Débito', 'Depósito', 'Dinheiro'],
 			/* user input data */
 			input_supplier: '',
 			input_reseller: '',

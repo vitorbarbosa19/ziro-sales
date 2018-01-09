@@ -36,15 +36,15 @@ const submitForm = (that) => async (event) => {
 		supplierExists ?
 			that.setState({ error_supplier: '' })
 		:
-			that.setState({ error_supplier: 'Esse fornecedor não está cadastrado' })	
+			that.setState({ error_supplier: 'Fornecedor não cadastrado' })	
 		resellerExists ?
 			that.setState({ error_reseller: ''})
 		:
-			that.setState({ error_reseller: 'Esse lojista não está cadastrado' })
+			that.setState({ error_reseller: 'Lojista não cadastrado' })
 		payMethodExists ?
 			that.setState({ error_pay_method: '' })
 		:
-			that.setState({ error_pay_method: 'Esse meio de pagamento não está cadastrado' })
+			that.setState({ error_pay_method: 'Meio de pagamento não cadastrado' })
 		valueIsValid ?
 			that.setState({ error_value: '' })
 		:

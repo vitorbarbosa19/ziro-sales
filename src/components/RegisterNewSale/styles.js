@@ -1,6 +1,6 @@
 export const form = {
 	maxWidth: '400px',
-	margin: '0 auto',
+	margin: '20px auto 60px',
 	padding: '0 15%'
 }
 

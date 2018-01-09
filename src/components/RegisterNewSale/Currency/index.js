@@ -25,7 +25,9 @@ export default class Currency extends Component {
 	render() {
 		return (
 			<div style={container}>
-				<label style={error}>{this.props.errorMessage}</label>
+				<label style={error}>
+					{this.props.errorMessage ? this.props.errorIcon(16, 16) : null} &nbsp; {this.props.errorMessage}
+				</label>
 				<input
 					style={this.state.hasFocus ? inputFocus : input}
 					type='text'
