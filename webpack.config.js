@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const path = require('path')
 const spreadsheetUrl = require('./credentials')
 
-module.exports = {
+const config = {
 	entry: './src/index.js',
 	output: {
 		path: path.resolve(__dirname, 'build'),
@@ -38,8 +38,17 @@ module.exports = {
 		new HtmlWebpackPlugin({ template: './src/index.html' }),
 		new webpack.DefinePlugin({
 			'process.env': {
-				SPREADSHEET_URL: JSON.stringify(spreadsheetUrl)
+				SPREADSHEET_URL: JSON.stringify(spreadsheetUrl),
+				NODE_ENV: JSON.stringify('production')
 			}
 		})
 	]
 }
+
+if (process.env.NODE_ENV === 'production') {
+	config.plugins.push(
+		new webpack.optimize.UglifyJsPlugin()
+	)
+}
+
+module.exports = config
