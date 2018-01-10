@@ -1,6 +1,7 @@
 const submitForm = (that) => async (event) => {
 	event.preventDefault()
 	/* validate user inputs */
+	const idIsValid = that.state.input_id.toString().length > 4
 	const supplierExists = that.state.input_supplier === that.state.suppliers.find( (supplier) => {
 		return supplier === that.state.input_supplier
 	})
@@ -12,31 +13,43 @@ const submitForm = (that) => async (event) => {
 	})
 	const valueIsValid = Boolean(parseFloat(that.state.input_value)) !== false
 	const comissionIsValid = Boolean(parseFloat(that.state.input_comission)) !== false
+	const sellerExists = that.state.input_seller === that.state.sellers.find( (seller) => {
+		return seller === that.state.input_seller
+	})
 	const typeIsValid = Boolean(that.state.input_type) !== false
 	/* if validated, then submit, else notify of errors */
-	if (supplierExists && resellerExists && payMethodExists && valueIsValid && comissionIsValid && typeIsValid) {
+	if (idIsValid && supplierExists && resellerExists && payMethodExists && valueIsValid &&
+			comissionIsValid && sellerExists && typeIsValid) {
 		that.changeUiState('FORM_SUBMIT')
 		await setTimeout( () => alert('Formulário enviado com sucesso!'), 1000)
 		that.setState({
+			input_id: '',
 			input_supplier: '',
 			input_reseller: '',
 			input_pay_method: '',
 			input_value: '',
 			input_comission: '',
+			input_seller: '',
 			input_type: '',
+			error_id: '',
 			error_supplier: '',
 			error_reseller: '',
 			error_pay_method: '',
 			error_value: '',
 			error_comission: '',
+			error_seller: '',
 			error_type: ''
 		})
 		that.changeUiState('SUBMIT_OK')
 	} else {
+		idIsValid ?
+			that.setState({ error_id: '' })
+		:
+			that.setState({ error_id: 'Valor deve ter pelo menos 5 dígitos' })
 		supplierExists ?
 			that.setState({ error_supplier: '' })
 		:
-			that.setState({ error_supplier: 'Fornecedor não cadastrado' })	
+			that.setState({ error_supplier: 'Fornecedor não cadastrado' })
 		resellerExists ?
 			that.setState({ error_reseller: ''})
 		:
@@ -48,15 +61,19 @@ const submitForm = (that) => async (event) => {
 		valueIsValid ?
 			that.setState({ error_value: '' })
 		:
-			that.setState({ error_value: 'Valor inválido' })
+			that.setState({ error_value: 'Preencha esse campo' })
 		comissionIsValid ?
 			that.setState({ error_comission: '' })
 		:
-			that.setState({ error_comission: 'Valor inválido' })
+			that.setState({ error_comission: 'Preencha esse campo' })
+		sellerExists ?
+			that.setState({ error_seller: '' })
+		:
+			that.setState({ error_seller: 'Assessor não cadastrado' })
 		typeIsValid ?
 			that.setState({ error_type: '' })
 		:
-			that.setState({ error_type: 'Valor inválido' })
+			that.setState({ error_type: 'Selecione uma opção' })
 	}
 }
 

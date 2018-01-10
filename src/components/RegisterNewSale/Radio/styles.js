@@ -40,8 +40,7 @@ export const name = {
 }
 
 export const radio = {
-	WebkitAppearance: 'none',
-	MozAppearance: 'none'
+	visibility: 'hidden'
 }
 
 export const error = {

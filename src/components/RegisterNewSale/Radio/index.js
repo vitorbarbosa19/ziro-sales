@@ -42,6 +42,7 @@ export default class Radio extends Component {
 										id={option.name}
 										style={radio}
 										value={option.name}
+										checked={option.name === this.state.selected}
 									/>
 								</div>
 							)

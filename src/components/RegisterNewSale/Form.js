@@ -21,7 +21,16 @@ const Form = (props) => (
 	    />
 	  </div>
 		<h1 style={title}>Cadastro de vendas 2018</h1>
-		<form onSubmit={props.submitForm}>
+		<form id='form' onSubmit={props.submitForm}>
+			{/* id field */}
+			<DropDown
+				type='number'
+				placeholder='Boleto'
+				updateParent={props.saveId}
+				errorMessage={props.errorId}
+				errorIcon={AlertSvg}
+				formSubmit={props.uiState === 'submitting'}
+			/>
 			{/* reseller field */}
 			<DropDown
 				type='text'
@@ -67,6 +76,16 @@ const Form = (props) => (
 				placeholder='Comissão'
 				updateParent={props.saveComission}
 				errorMessage={props.errorComission}
+				errorIcon={AlertSvg}
+				formSubmit={props.uiState === 'submitting'}
+			/>
+			{/* seller field */}
+			<DropDown
+				type='text'
+				placeholder='Assessor'
+				updateParent={props.saveSeller}
+				listToDisplay={props.sellers}
+				errorMessage={props.errorSeller}
 				errorIcon={AlertSvg}
 				formSubmit={props.uiState === 'submitting'}
 			/>
