@@ -1,5 +1,7 @@
 import React from 'react'
 import { Image } from 'cloudinary-react'
+import DayPickerInput from 'react-day-picker/DayPickerInput'
+import { months, days, dateFormatter } from './utils/dateHelper'
 import DropDown from './DropDown/index'
 import Currency from './Currency/index'
 import Radio from './Radio/index'
@@ -70,6 +72,16 @@ const Form = (props) => (
 				errorIcon={AlertSvg}
 				formSubmit={props.uiState === 'submitting'}
 			/>
+			{/* sellDate field */}
+			<DayPickerInput
+				dayPickerProps={{
+					months: months,
+					weekdaysShort: days
+				}}
+				placeholder='Data da venda'
+				formatDate={dateFormatter}
+
+			/>
 			{/* comission field */}
 			<Currency
 				symbol='%'
@@ -89,6 +101,8 @@ const Form = (props) => (
 				errorIcon={AlertSvg}
 				formSubmit={props.uiState === 'submitting'}
 			/>
+			{/* expiryDate field */}
+			<DayPickerInput />
 			{/* type field */}
 			<Radio
 				options={[
