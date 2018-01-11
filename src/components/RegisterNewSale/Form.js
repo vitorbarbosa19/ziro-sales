@@ -80,7 +80,6 @@ const Form = (props) => (
 				}}
 				placeholder='Data da venda'
 				formatDate={dateFormatter}
-
 			/>
 			{/* comission field */}
 			<Currency

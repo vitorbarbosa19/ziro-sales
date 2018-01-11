@@ -162,8 +162,9 @@ input::placeholder {
 /* Default modifiers */
 
 .DayPicker-Day--today {
-  color: #d0021b;
-  font-weight: 700;
+  color: #fff;
+  background-color: rgba(48,62,77,0.8);
+  border-radius: 100%;
 }
 
 .DayPicker-Day--outside {
@@ -200,7 +201,8 @@ input::placeholder {
 
 .DayPicker:not(.DayPicker--interactionDisabled)
   .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
-  background-color: #f0f8ff;
+  color: #fff;
+  background-color: rgba(48,62,77,0.8);
   border-radius: 50%;
 }
 
