@@ -12,14 +12,18 @@ const submitForm = (that) => async (event) => {
 		return payMethod === that.state.input_pay_method
 	})
 	const valueIsValid = Boolean(parseFloat(that.state.input_value)) !== false
+	const sellDateIsValid = Boolean(that.state.input_sell_date) !== false
 	const comissionIsValid = Boolean(parseFloat(that.state.input_comission)) !== false
 	const sellerExists = that.state.input_seller === that.state.sellers.find( (seller) => {
 		return seller === that.state.input_seller
 	})
+	let expiryDateIsValid = false
+	if (Boolean(that.state.input_sell_date) !== false && Boolean(that.state.input_expiry_date) !== false)
+		expiryDateIsValid = Date.parse(that.state.input_expiry_date) >= Date.parse(that.state.input_sell_date)
 	const typeIsValid = Boolean(that.state.input_type) !== false
 	/* if validated, then submit, else notify of errors */
 	if (idIsValid && supplierExists && resellerExists && payMethodExists && valueIsValid &&
-			comissionIsValid && sellerExists && typeIsValid) {
+			sellDateIsValid && comissionIsValid && sellerExists && expiryDateIsValid && typeIsValid) {
 		that.changeUiState('FORM_SUBMIT')
 		await setTimeout( () => alert('Formulário enviado com sucesso!'), 1000)
 		that.setState({
@@ -28,16 +32,20 @@ const submitForm = (that) => async (event) => {
 			input_reseller: '',
 			input_pay_method: '',
 			input_value: '',
+			input_sell_date: '',
 			input_comission: '',
 			input_seller: '',
+			input_expiry_date: '',
 			input_type: '',
 			error_id: '',
 			error_supplier: '',
 			error_reseller: '',
 			error_pay_method: '',
 			error_value: '',
+			error_sell_date: '',
 			error_comission: '',
 			error_seller: '',
+			error_expiry_date: '',
 			error_type: ''
 		})
 		that.changeUiState('SUBMIT_OK')
@@ -62,6 +70,10 @@ const submitForm = (that) => async (event) => {
 			that.setState({ error_value: '' })
 		:
 			that.setState({ error_value: 'Preencha esse campo' })
+		sellDateIsValid ?
+			that.setState({ error_sell_date: '' })
+		:
+			that.setState({ error_sell_date: 'Escolha uma data do calendário' })
 		comissionIsValid ?
 			that.setState({ error_comission: '' })
 		:
@@ -70,6 +82,10 @@ const submitForm = (that) => async (event) => {
 			that.setState({ error_seller: '' })
 		:
 			that.setState({ error_seller: 'Assessor não cadastrado' })
+		expiryDateIsValid ?
+			that.setState({ error_expiry_date: '' })
+		:
+			that.setState({ error_expiry_date: 'Deve ser maior ou igual que data de venda' })
 		typeIsValid ?
 			that.setState({ error_type: '' })
 		:

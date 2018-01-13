@@ -7,8 +7,10 @@ import saveSupplier from './methods/saveSupplier'
 import saveReseller from './methods/saveReseller'
 import savePayMethod from './methods/savePayMethod'
 import saveValue from './methods/saveValue'
+import saveSellDate from './methods/saveSellDate'
 import saveComission from './methods/saveComission'
 import saveSeller from './methods/saveSeller'
+import saveExpiryDate from './methods/saveExpiryDate'
 import saveType from './methods/saveType'
 import submitForm from './methods/submitForm'
 
@@ -29,8 +31,10 @@ export default class RegisterNewSale extends Component {
 			input_reseller: '',
 			input_pay_method: '',
 			input_value: '',
+			input_sell_date: '',
 			input_comission: '',
 			input_seller: '',
+			input_expiry_date: '',
 			input_type: '',
 			/* ui error message */
 			error_id: '',
@@ -38,8 +42,10 @@ export default class RegisterNewSale extends Component {
 			error_reseller: '',
 			error_pay_method: '',
 			error_value: '',
+			error_sell_date: '',
 			error_comission: '',
 			error_seller: '',
+			error_expiry_date: '',
 			error_type: ''
 		}
 	}
@@ -60,8 +66,10 @@ export default class RegisterNewSale extends Component {
 	saveReseller = saveReseller(this)
 	savePayMethod = savePayMethod(this)
 	saveValue = saveValue(this)
+	saveSellDate = saveSellDate(this)
 	saveComission = saveComission(this)
 	saveSeller = saveSeller(this)
+	saveExpiryDate = saveExpiryDate(this)
 	saveType = saveType(this)
 	submitForm = submitForm(this)
 	/* ------ */
@@ -86,6 +94,9 @@ export default class RegisterNewSale extends Component {
 				/* value */
 				saveValue={this.saveValue}
 				errorValue={this.state.error_value}
+				/* sellDate */
+				saveSellDate={this.saveSellDate}
+				errorSellDate={this.state.error_sell_date}
 				/* comission */
 				saveComission={this.saveComission}
 				errorComission={this.state.error_comission}
@@ -93,6 +104,9 @@ export default class RegisterNewSale extends Component {
 				sellers={this.state.sellers}
 				saveSeller={this.saveSeller}
 				errorSeller={this.state.error_seller}
+				/* expiryDate */
+				saveExpiryDate={this.saveExpiryDate}
+				errorExpiryDate={this.state.error_expiry_date}
 				/* type */
 				saveType={this.saveType}
 				errorType={this.state.error_type}
