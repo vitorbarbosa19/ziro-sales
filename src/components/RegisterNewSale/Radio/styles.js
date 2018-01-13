@@ -47,7 +47,7 @@ export const error = {
 	display: 'flex',
 	alignItems: 'center',
 	padding: '8px 8px 0px',
-	fontSize: '1.4rem',
+	fontSize: '1.3rem',
 	fontWeight: '700',
 	color: '#F16B6F'
 }

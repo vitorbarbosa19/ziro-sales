@@ -1,7 +1,7 @@
 html {
 	font-size: 62.5%;
 	font-family: 'system-ui', 'sans-serif';
-	line-height: 1.4;
+	line-height: 1.5;
 	text-align: justify;
 }
 
@@ -55,12 +55,11 @@ input::placeholder {
 .DayPicker-NavButton {
   position: absolute;
   cursor: pointer;
-  top: 1rem;
+  top: 1.5rem;
   right: 1.5rem;
-  margin-top: 2px;
   color: #8b9898;
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 3rem;
+  height: 3rem;
   display: inline-block;
   background-size: 50%;
   background-repeat: no-repeat;
@@ -72,7 +71,7 @@ input::placeholder {
 }
 
 .DayPicker-NavButton--prev {
-  margin-right: 1.5rem;
+  margin-right: 2.5rem;
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAwCAYAAAB5R9gVAAAABGdBTUEAALGPC/xhBQAAAVVJREFUWAnN2G0KgjAYwPHpGfRkaZeqvgQaK+hY3SUHrk1YzNLay/OiEFp92I+/Mp2F2Mh2lLISWnflFjzH263RQjzMZ19wgs73ez0o1WmtW+dgA01VxrE3p6l2GLsnBy1VYQOtVSEH/atCCgqpQgKKqYIOiq2CBkqtggLKqQIKgqgCBjpJ2Y5CdJ+zrT9A7HHSTA1dxUdHgzCqJIEwq0SDsKsEg6iqBIEoq/wEcVRZBXFV+QJxV5mBtlDFB5VjYTaGZ2sf4R9PM7U9ZU+lLuaetPP/5Die3ToO1+u+MKtHs06qODB2zBnI/jBd4MPQm1VkY79Tb18gB+C62FdBFsZR6yeIo1YQiLJWMIiqVjQIu1YSCLNWFgijVjYIuhYYCKoWKAiiFgoopxYaKLUWOii2FgkophYp6F3r42W5A9s9OcgNvva8xQaysKXlFytoqdYmQH6tF3toSUo0INq9AAAAAElFTkSuQmCC');
 }
 
@@ -92,8 +91,9 @@ input::placeholder {
 }
 
 .DayPicker-Caption > div {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 700;
+  padding: 1rem;
 }
 
 .DayPicker-Weekdays {
@@ -128,7 +128,7 @@ input::placeholder {
 
 .DayPicker-Day {
   display: table-cell;
-  padding: 0.5rem;
+  padding: 1.5rem;
   text-align: center;
   cursor: pointer;
   vertical-align: middle;
@@ -240,8 +240,9 @@ input::placeholder {
 }
 
 .DayPickerInput-OverlayWrapper {
-	font-size: 1.5rem;
+	font-size: 1.8rem;
   position: relative;
+  width: 100%;
 }
 
 .DayPickerInput-Overlay {

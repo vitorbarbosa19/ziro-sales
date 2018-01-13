@@ -15,7 +15,7 @@ export const input = {
 	padding: '12px 25px',
 	height: '22px',
 	backgroundColor: 'rgba(48,62,77,0.025)',
-	fontSize: '1.5rem',
+	fontSize: '1.6rem',
 	color: 'rgba(48,62,77,0.8)',
 	fontWeight: '700'
 }
@@ -32,7 +32,7 @@ export const inputFocus = {
 	padding: '12px 25px',
 	height: '22px',
 	backgroundColor: 'rgba(48,62,77,0.025)',
-	fontSize: '1.5rem',
+	fontSize: '1.6rem',
 	color: 'rgba(48,62,77,0.8)',
 	fontWeight: '700'
 }
@@ -41,7 +41,7 @@ export const error = {
 	display: 'flex',
 	alignItems: 'center',
 	padding: '8px 8px 0px',
-	fontSize: '1.4rem',
+	fontSize: '1.3rem',
 	fontWeight: '700',
 	color: '#F16B6F'
 }

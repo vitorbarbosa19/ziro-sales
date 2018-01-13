@@ -40,6 +40,7 @@ export default class DropDown extends Component {
 					value={this.state.userInput}
 					onChange={this.getUserInput}
 					onFocus={this.toggleDropDown}
+					onBlur={this.props.listToDisplay ? null : this.toggleDropDown}
 				/>
 				{
 					this.props.listToDisplay ?
