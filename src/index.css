@@ -128,7 +128,7 @@ input::placeholder {
 
 .DayPicker-Day {
   display: table-cell;
-  padding: 1.5rem;
+  padding: 0.8rem;
   text-align: center;
   cursor: pointer;
   vertical-align: middle;
@@ -217,7 +217,7 @@ input::placeholder {
 .DayPickerInput {
   display: flex;
   flex-direction: column;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
 }
 
 .DayPickerInput input {
@@ -228,7 +228,7 @@ input::placeholder {
 	padding: 12px 25px;
 	height: 22px;
 	background-color: rgba(48,62,77,0.025);
-	font-size: 1.5rem;
+	font-size: 1.6rem;
 	color: rgba(48,62,77,0.8);
 	font-weight: 700;
 }
