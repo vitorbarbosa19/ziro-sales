@@ -4,8 +4,9 @@
 const machine = {
 	idle: { FORM_SUBMIT: 'submitting' },
 	mounting: { FETCH_OK: 'idle', FETCH_ERROR: 'errorFetching' },
-	submitting: { SUBMIT_OK: 'idle', SUBMIT_ERROR: 'errorSubmitting' },
 	errorFetching: {},
+	submitting: { SUBMIT_OK: 'submitSuccess', SUBMIT_ERROR: 'errorSubmitting' },
+	submitSuccess: { READY: 'idle' },
 	errorSubmitting: { FORM_SUBMIT: 'submitting' }
 }
 

@@ -30,7 +30,7 @@ const Form = (props) => (
 				updateParent={props.saveId}
 				errorMessage={props.errorId}
 				errorIcon={AlertSvg}
-				formSubmit={props.uiState === 'submitting'}
+				formSubmit={props.uiState === 'submitSuccess'}
 			/>
 			{/* reseller field */}
 			<DropDown
@@ -40,7 +40,7 @@ const Form = (props) => (
 				listToDisplay={props.resellers}
 				errorMessage={props.errorReseller}
 				errorIcon={AlertSvg}
-				formSubmit={props.uiState === 'submitting'}
+				formSubmit={props.uiState === 'submitSuccess'}
 			/>
 			{/* supplier field */}
 			<DropDown
@@ -50,7 +50,7 @@ const Form = (props) => (
 				listToDisplay={props.suppliers}
 				errorMessage={props.errorSupplier}
 				errorIcon={AlertSvg}
-				formSubmit={props.uiState === 'submitting'}
+				formSubmit={props.uiState === 'submitSuccess'}
 			/>
 			{/* payMethod field */}
 			<DropDown
@@ -60,7 +60,7 @@ const Form = (props) => (
 				listToDisplay={props.payMethods}
 				errorMessage={props.errorPayMethod}
 				errorIcon={AlertSvg}
-				formSubmit={props.uiState === 'submitting'}
+				formSubmit={props.uiState === 'submitSuccess'}
 			/>
 			{/* value field */}
 			<Currency
@@ -69,7 +69,7 @@ const Form = (props) => (
 				updateParent={props.saveValue}
 				errorMessage={props.errorValue}
 				errorIcon={AlertSvg}
-				formSubmit={props.uiState === 'submitting'}
+				formSubmit={props.uiState === 'submitSuccess'}
 			/>
 			{/* sellDate field */}
 			<DateInput
@@ -77,7 +77,7 @@ const Form = (props) => (
 				updateParent={props.saveSellDate}
 				errorMessage={props.errorSellDate} 
 				errorIcon={AlertSvg}
-				formSubmit={props.uiState === 'submitting'}
+				formSubmit={props.uiState === 'submitSuccess'}
 			/>
 			{/* comission field */}
 			<Currency
@@ -86,7 +86,7 @@ const Form = (props) => (
 				updateParent={props.saveComission}
 				errorMessage={props.errorComission}
 				errorIcon={AlertSvg}
-				formSubmit={props.uiState === 'submitting'}
+				formSubmit={props.uiState === 'submitSuccess'}
 			/>
 			{/* seller field */}
 			<DropDown
@@ -96,7 +96,7 @@ const Form = (props) => (
 				listToDisplay={props.sellers}
 				errorMessage={props.errorSeller}
 				errorIcon={AlertSvg}
-				formSubmit={props.uiState === 'submitting'}
+				formSubmit={props.uiState === 'submitSuccess'}
 			/>
 			{/* expiryDate field */}
 			<DateInput
@@ -104,7 +104,7 @@ const Form = (props) => (
 				updateParent={props.saveExpiryDate}
 				errorMessage={props.errorExpiryDate} 
 				errorIcon={AlertSvg}
-				formSubmit={props.uiState === 'submitting'}
+				formSubmit={props.uiState === 'submitSuccess'}
 			/>
 			{/* type field */}
 			<Radio
@@ -115,7 +115,7 @@ const Form = (props) => (
 				updateParent={props.saveType}
 				errorMessage={props.errorType}
 				errorIcon={AlertSvg}
-				formSubmit={props.uiState === 'submitting'}
+				formSubmit={props.uiState === 'submitSuccess'}
 			/>
 			{/* submit button */}
 			<input style={submit} type='submit' value='Enviar' />

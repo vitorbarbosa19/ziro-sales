@@ -74,52 +74,52 @@ const submitForm = (that) => async (event) => {
 			})
 			that.changeUiState('SUBMIT_OK')
 			alert('Formulário enviado com sucesso!')
+			that.changeUiState('READY')
 		} else {
 			that.changeUiState('SUBMIT_ERROR')
 			alert('Erro ao enviar formulário. Tente novamente. Se o erro persistir, contate o suporte.')
 		}
-	} else {
-		idIsValid ?
-			that.setState({ error_id: '' })
-		:
-			that.setState({ error_id: 'Valor deve ter pelo menos 5 dígitos' })
-		supplierExists ?
-			that.setState({ error_supplier: '' })
-		:
-			that.setState({ error_supplier: 'Fornecedor não cadastrado' })
-		resellerExists ?
-			that.setState({ error_reseller: ''})
-		:
-			that.setState({ error_reseller: 'Lojista não cadastrado' })
-		payMethodExists ?
-			that.setState({ error_pay_method: '' })
-		:
-			that.setState({ error_pay_method: 'Meio de pagamento não cadastrado' })
-		valueIsValid ?
-			that.setState({ error_value: '' })
-		:
-			that.setState({ error_value: 'Preencha esse campo' })
-		sellDateIsValid ?
-			that.setState({ error_sell_date: '' })
-		:
-			that.setState({ error_sell_date: 'Escolha uma data do calendário' })
-		comissionIsValid ?
-			that.setState({ error_comission: '' })
-		:
-			that.setState({ error_comission: 'Preencha esse campo' })
-		sellerExists ?
-			that.setState({ error_seller: '' })
-		:
-			that.setState({ error_seller: 'Assessor não cadastrado' })
-		expiryDateIsValid ?
-			that.setState({ error_expiry_date: '' })
-		:
-			that.setState({ error_expiry_date: 'Deve ser maior ou igual que data de venda' })
-		typeIsValid ?
-			that.setState({ error_type: '' })
-		:
-			that.setState({ error_type: 'Selecione uma opção' })
 	}
+	idIsValid ?
+		that.setState({ error_id: '' })
+	:
+		that.setState({ error_id: 'Valor deve ter pelo menos 5 dígitos' })
+	supplierExists ?
+		that.setState({ error_supplier: '' })
+	:
+		that.setState({ error_supplier: 'Fornecedor não cadastrado' })
+	resellerExists ?
+		that.setState({ error_reseller: ''})
+	:
+		that.setState({ error_reseller: 'Lojista não cadastrado' })
+	payMethodExists ?
+		that.setState({ error_pay_method: '' })
+	:
+		that.setState({ error_pay_method: 'Meio de pagamento não cadastrado' })
+	valueIsValid ?
+		that.setState({ error_value: '' })
+	:
+		that.setState({ error_value: 'Preencha esse campo' })
+	sellDateIsValid ?
+		that.setState({ error_sell_date: '' })
+	:
+		that.setState({ error_sell_date: 'Escolha uma data do calendário' })
+	comissionIsValid ?
+		that.setState({ error_comission: '' })
+	:
+		that.setState({ error_comission: 'Preencha esse campo' })
+	sellerExists ?
+		that.setState({ error_seller: '' })
+	:
+		that.setState({ error_seller: 'Assessor não cadastrado' })
+	expiryDateIsValid ?
+		that.setState({ error_expiry_date: '' })
+	:
+		that.setState({ error_expiry_date: 'Deve ser maior ou igual que data de venda' })
+	typeIsValid ?
+		that.setState({ error_type: '' })
+	:
+		that.setState({ error_type: 'Selecione uma opção' })
 }
 
 export default submitForm
