@@ -32,3 +32,13 @@ export const submit = {
 	boxShadow: `0px 3px 10px 0px rgba(48,62,77,0.10), 0px 3px 20px 0px rgba(48,62,77,0.08), 
 	0px 3px 30px 0px rgba(48,62,77,0.06), 0px 3px 40px 0px rgba(48,62,77,0.04)`,
 }
+
+export const error = {
+	display: 'flex',
+	justifyContent: 'center',
+	alignItems: 'center',
+	padding: '20px',
+	fontSize: '1.6rem',
+	fontWeight: '700',
+	color: '#F16B6F'
+}
