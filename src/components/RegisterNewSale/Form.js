@@ -7,6 +7,7 @@ import Radio from './Radio/index'
 import WifiSvg from '../../assets/WifiSvg'
 import WifiOffSvg from '../../assets/WifiOffSvg'
 import AlertSvg from '../../assets/AlertSvg'
+import SpinnerSvg from '../../assets/SpinnerSvg'
 import { form, logo, title, submit } from './styles'
 
 const Form = (props) => (
@@ -118,7 +119,14 @@ const Form = (props) => (
 				formSubmit={props.uiState === 'submitSuccess'}
 			/>
 			{/* submit button */}
-			<input style={submit} type='submit' value='Enviar' />
+			{
+				props.uiState !== 'submitting' ?
+					<input style={submit} type='submit' value='Enviar' />
+				:
+					<div style={{marginTop: '30px', textAlign: 'center'}}>
+						{SpinnerSvg(40,40)}
+					</div>
+			}
 		</form>
 	</div>
 )

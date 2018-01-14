@@ -7,7 +7,7 @@ const sendToBackend = (...parameters) => {
 			comissao, assessor, vencimento, tipo ] = parameters
 		const address = `https://ziro-sales-backend.herokuapp.com/`
 		const url = `${address}?boleto=${boleto}&lojista=${lojista}&fornecedor=${fornecedor}&pagamento=${pagamento}
-			&valor=${valor}&venda=${dateFormatter(venda)}&comissao=${parseFloat(comissao / 100).toFixed(2)}
+			&valor=${valor}&venda=${dateFormatter(venda)}&comissao=${parseFloat(comissao / 100)}
 			&assessor=${assessor}&vencimento=${dateFormatter(vencimento)}&tipo=${tipo}`
 		try {
 			const response = await axios.get(url)

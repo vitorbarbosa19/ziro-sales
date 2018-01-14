@@ -13,6 +13,7 @@ import saveSeller from './methods/saveSeller'
 import saveExpiryDate from './methods/saveExpiryDate'
 import saveType from './methods/saveType'
 import submitForm from './methods/submitForm'
+import SpinnerSvg from '../../assets/SpinnerSvg'
 import { error } from './styles'
 
 export default class RegisterNewSale extends Component {
@@ -75,49 +76,53 @@ export default class RegisterNewSale extends Component {
 	submitForm = submitForm(this)
 	/* ------ */
 	render() {
-		return (
-			this.state.uiState === 'errorFetching' ?
-				<div style={error}>Erro no carregamento! Por favor atualize a página.</div>
-			:
-				<Form 
-					/* id */
-					saveId={this.saveId}
-					errorId={this.state.error_id}
-					/* suppliers */
-					suppliers={this.state.suppliers}
-					saveSupplier={this.saveSupplier}
-					errorSupplier={this.state.error_supplier}
-					/* resellers */
-					resellers={this.state.resellers}
-					saveReseller={this.saveReseller}
-					errorReseller={this.state.error_reseller}
-					/* payMethods */
-					payMethods={this.state.payMethods}
-					savePayMethod={this.savePayMethod}
-					errorPayMethod={this.state.error_pay_method}
-					/* value */
-					saveValue={this.saveValue}
-					errorValue={this.state.error_value}
-					/* sellDate */
-					saveSellDate={this.saveSellDate}
-					errorSellDate={this.state.error_sell_date}
-					/* comission */
-					saveComission={this.saveComission}
-					errorComission={this.state.error_comission}
-					/* sellers */
-					sellers={this.state.sellers}
-					saveSeller={this.saveSeller}
-					errorSeller={this.state.error_seller}
-					/* expiryDate */
-					saveExpiryDate={this.saveExpiryDate}
-					errorExpiryDate={this.state.error_expiry_date}
-					/* type */
-					saveType={this.saveType}
-					errorType={this.state.error_type}
-					/* others */
-					submitForm={this.submitForm}
-					uiState={this.state.uiState}
-				/>
-		)
+		switch (this.state.uiState) {
+			case 'errorFetching':
+				return <div style={error}>Erro no carregamento! Por favor atualize a página.</div>
+			case 'mounting':
+				return <div style={{marginTop: '30px', textAlign: 'center'}}>{SpinnerSvg(50,50)}</div>
+			default:
+				return (
+					<Form 
+						/* id */
+						saveId={this.saveId}
+						errorId={this.state.error_id}
+						/* suppliers */
+						suppliers={this.state.suppliers}
+						saveSupplier={this.saveSupplier}
+						errorSupplier={this.state.error_supplier}
+						/* resellers */
+						resellers={this.state.resellers}
+						saveReseller={this.saveReseller}
+						errorReseller={this.state.error_reseller}
+						/* payMethods */
+						payMethods={this.state.payMethods}
+						savePayMethod={this.savePayMethod}
+						errorPayMethod={this.state.error_pay_method}
+						/* value */
+						saveValue={this.saveValue}
+						errorValue={this.state.error_value}
+						/* sellDate */
+						saveSellDate={this.saveSellDate}
+						errorSellDate={this.state.error_sell_date}
+						/* comission */
+						saveComission={this.saveComission}
+						errorComission={this.state.error_comission}
+						/* sellers */
+						sellers={this.state.sellers}
+						saveSeller={this.saveSeller}
+						errorSeller={this.state.error_seller}
+						/* expiryDate */
+						saveExpiryDate={this.saveExpiryDate}
+						errorExpiryDate={this.state.error_expiry_date}
+						/* type */
+						saveType={this.saveType}
+						errorType={this.state.error_type}
+						/* others */
+						submitForm={this.submitForm}
+						uiState={this.state.uiState}
+					/>
+				)
+		}
 	}
 }
