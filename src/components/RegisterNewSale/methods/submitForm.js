@@ -31,9 +31,8 @@ const submitForm = (that) => async (event) => {
 	if (idIsValid && supplierExists && resellerExists && payMethodExists && valueIsValid &&
 			sellDateIsValid && comissionIsValid && sellerExists && expiryDateIsValid && typeIsValid) {
 		that.changeUiState('FORM_SUBMIT')
-		let submitState
 		try {
-			submitState = await sendToBackend(
+			await sendToBackend(
 				that.state.input_id,
 				that.state.input_supplier,
 				that.state.input_reseller,
@@ -45,11 +44,6 @@ const submitForm = (that) => async (event) => {
 				that.state.input_expiry_date,
 				that.state.input_type
 			)
-		} catch (error) {
-			console.log(error)
-			submitState = 'ERROR'
-		}
-		if (submitState === 'SUCCESS') {
 			that.setState({
 				input_id: '',
 				input_supplier: '',
@@ -75,7 +69,8 @@ const submitForm = (that) => async (event) => {
 			that.changeUiState('SUBMIT_OK')
 			alert('Formulário enviado com sucesso!')
 			that.changeUiState('READY')
-		} else {
+		} catch (error) {
+			console.log(error)
 			that.changeUiState('SUBMIT_ERROR')
 			alert('Erro ao enviar formulário. Tente novamente. Se o erro persistir, contate o suporte.')
 		}

@@ -10,9 +10,9 @@ const sendToBackend = (...parameters) => {
 			&vencimento=${vencimento}&tipo=${tipo}`
 		try {
 			const response = await axios.get(url)
-			if (response === 'SUCCESS')
-				resolve(response)
-			reject(response)
+			if (response.data === 'INVALID_REQUEST')
+				reject(response.data)
+			resolve(response.data)
 		} catch (error) {
 			reject(error)
 		}
