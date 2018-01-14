@@ -1,6 +1,10 @@
+import sendToBackend from '../utils/sendToBackend'
+
 const submitForm = (that) => async (event) => {
 	event.preventDefault()
+	/* -------------------- */
 	/* validate user inputs */
+	/* -------------------- */
 	const idIsValid = that.state.input_id.toString().length > 4
 	const supplierExists = that.state.input_supplier === that.state.suppliers.find( (supplier) => {
 		return supplier === that.state.input_supplier
@@ -11,44 +15,69 @@ const submitForm = (that) => async (event) => {
 	const payMethodExists = that.state.input_pay_method === that.state.payMethods.find( (payMethod) => {
 		return payMethod === that.state.input_pay_method
 	})
-	const valueIsValid = Boolean(parseFloat(that.state.input_value)) !== false
-	const sellDateIsValid = Boolean(that.state.input_sell_date) !== false
-	const comissionIsValid = Boolean(parseFloat(that.state.input_comission)) !== false
+	const valueIsValid = Boolean(parseFloat(that.state.input_value))
+	const sellDateIsValid = Boolean(that.state.input_sell_date)
+	const comissionIsValid = Boolean(parseFloat(that.state.input_comission))
 	const sellerExists = that.state.input_seller === that.state.sellers.find( (seller) => {
 		return seller === that.state.input_seller
 	})
 	let expiryDateIsValid = false
-	if (Boolean(that.state.input_sell_date) !== false && Boolean(that.state.input_expiry_date) !== false)
+	if (Boolean(that.state.input_sell_date) && Boolean(that.state.input_expiry_date))
 		expiryDateIsValid = Date.parse(that.state.input_expiry_date) >= Date.parse(that.state.input_sell_date)
-	const typeIsValid = Boolean(that.state.input_type) !== false
+	const typeIsValid = Boolean(that.state.input_type)
+	/* ------------------------------------------------ */
 	/* if validated, then submit, else notify of errors */
+	/* ------------------------------------------------ */
 	if (idIsValid && supplierExists && resellerExists && payMethodExists && valueIsValid &&
 			sellDateIsValid && comissionIsValid && sellerExists && expiryDateIsValid && typeIsValid) {
 		that.changeUiState('FORM_SUBMIT')
-		await setTimeout( () => alert('Formulário enviado com sucesso!'), 1000)
-		that.setState({
-			input_id: '',
-			input_supplier: '',
-			input_reseller: '',
-			input_pay_method: '',
-			input_value: '',
-			input_sell_date: '',
-			input_comission: '',
-			input_seller: '',
-			input_expiry_date: '',
-			input_type: '',
-			error_id: '',
-			error_supplier: '',
-			error_reseller: '',
-			error_pay_method: '',
-			error_value: '',
-			error_sell_date: '',
-			error_comission: '',
-			error_seller: '',
-			error_expiry_date: '',
-			error_type: ''
-		})
-		that.changeUiState('SUBMIT_OK')
+		let submitState
+		try {
+			submitState = await sendToBackend(
+				that.state.input_id,
+				that.state.input_supplier,
+				that.state.input_reseller,
+				that.state.input_pay_method,
+				that.state.input_value,
+				that.state.input_sell_date,
+				that.state.input_comission,
+				that.state.input_seller,
+				that.state.input_expiry_date,
+				that.state.input_type
+			)
+		} catch (error) {
+			console.log(error)
+			submitState = 'ERROR'
+		}
+		if (submitState === 'SUCCESS') {
+			that.setState({
+				input_id: '',
+				input_supplier: '',
+				input_reseller: '',
+				input_pay_method: '',
+				input_value: '',
+				input_sell_date: '',
+				input_comission: '',
+				input_seller: '',
+				input_expiry_date: '',
+				input_type: '',
+				error_id: '',
+				error_supplier: '',
+				error_reseller: '',
+				error_pay_method: '',
+				error_value: '',
+				error_sell_date: '',
+				error_comission: '',
+				error_seller: '',
+				error_expiry_date: '',
+				error_type: ''
+			})
+			that.changeUiState('SUBMIT_OK')
+			alert('Formulário enviado com sucesso!')
+		} else {
+			that.changeUiState('SUBMIT_ERROR')
+			alert('Erro ao enviar formulário. Tente novamente. Se o erro persistir, contate o suporte.')
+		}
 	} else {
 		idIsValid ?
 			that.setState({ error_id: '' })
