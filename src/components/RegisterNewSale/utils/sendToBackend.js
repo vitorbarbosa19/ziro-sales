@@ -3,7 +3,7 @@ import dateFormatter from './dateFormatter'
 
 const sendToBackend = (...parameters) => {
 	return new Promise( async (resolve, reject) => {
-		const [ boleto, lojista, fornecedor, pagamento, valor, venda,
+		const [ boleto, fornecedor, lojista, pagamento, valor, venda,
 			comissao, assessor, vencimento, tipo ] = parameters
 		const address = `https://ziro-sales-backend.herokuapp.com/`
 		const url = `${address}?boleto=${boleto}&lojista=${lojista}&fornecedor=${fornecedor}&pagamento=${pagamento}
