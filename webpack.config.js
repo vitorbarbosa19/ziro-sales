@@ -49,6 +49,8 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 if (process.env.NODE_ENV === 'production') {
+	console.log('HERE')
+	console.log(process.env.RESELLERS_SHEET_URL)
 	config.plugins.push(
 		new webpack.optimize.UglifyJsPlugin(),
 		new webpack.optimize.ModuleConcatenationPlugin()
