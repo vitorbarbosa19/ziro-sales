@@ -51,15 +51,7 @@ if (process.env.NODE_ENV !== 'production') {
 if (process.env.NODE_ENV === 'production') {
 	config.plugins.push(
 		new webpack.optimize.UglifyJsPlugin(),
-		new webpack.optimize.ModuleConcatenationPlugin(),
-		new webpack.DefinePlugin({
-			'process.env': {
-				// uncomment if manual build. If Netlify build then leave commented
-				// SUPPLIERS_SHEET_URL: JSON.stringify(suppliers),
-				// RESELLERS_SHEET_URL: JSON.stringify(resellers),
-				NODE_ENV: JSON.stringify('production')
-			}
-		})
+		new webpack.optimize.ModuleConcatenationPlugin()
 	)
 }
 
