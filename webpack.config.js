@@ -1,7 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const path = require('path')
-const { suppliers, resellers } = require('./credentials')
 
 const config = {
 	entry: './src/index.js',
@@ -34,15 +33,19 @@ const config = {
 			}
 		]
 	},
-	plugins: [
-		new HtmlWebpackPlugin({ template: './src/index.html' }),
+	plugins: [ new HtmlWebpackPlugin({ template: './src/index.html' }) ]
+}
+
+if (process.env.NODE_ENV !== 'production') {
+	const { suppliers, resellers } = require('./credentials')
+	config.plugins.push(
 		new webpack.DefinePlugin({
 			'process.env': {
 				SUPPLIERS_SHEET_URL: JSON.stringify(suppliers),
 				RESELLERS_SHEET_URL: JSON.stringify(resellers)
 			}
 		})
-	]
+	)
 }
 
 if (process.env.NODE_ENV === 'production') {
@@ -51,8 +54,9 @@ if (process.env.NODE_ENV === 'production') {
 		new webpack.optimize.ModuleConcatenationPlugin(),
 		new webpack.DefinePlugin({
 			'process.env': {
-				SUPPLIERS_SHEET_URL: JSON.stringify(suppliers),
-				RESELLERS_SHEET_URL: JSON.stringify(resellers),
+				// uncomment if manual build. If Netlify build then leave commented
+				// SUPPLIERS_SHEET_URL: JSON.stringify(suppliers),
+				// RESELLERS_SHEET_URL: JSON.stringify(resellers),
 				NODE_ENV: JSON.stringify('production')
 			}
 		})
