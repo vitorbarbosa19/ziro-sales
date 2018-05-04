@@ -26,7 +26,7 @@ export default class RegisterNewSale extends Component {
 			suppliers: [],
 			resellers: [],
 			payMethods: ['Boleto', 'Cheque', 'Crédito', 'Débito', 'Depósito', 'Dinheiro'],
-			sellers: ['César', 'Leandro', 'Rúbia', 'Tayná'],
+			sellers: ['Ariene', 'César', 'Leandro', 'Mariana', 'Rúbia', 'Tayná'],
 			/* user input data */
 			input_id: '',
 			input_supplier: '',
