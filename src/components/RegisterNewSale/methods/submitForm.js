@@ -33,6 +33,7 @@ const submitForm = (that) => async (event) => {
 		that.changeUiState('FORM_SUBMIT')
 		try {
 			await sendToBackend(
+				that.state.input_romaneio,
 				that.state.input_id,
 				that.state.input_supplier,
 				that.state.input_reseller,
@@ -45,6 +46,7 @@ const submitForm = (that) => async (event) => {
 				that.state.input_type
 			)
 			that.setState({
+				input_romaneio: '',
 				input_id: '',
 				input_supplier: '',
 				input_reseller: '',
@@ -55,6 +57,7 @@ const submitForm = (that) => async (event) => {
 				input_seller: '',
 				input_expiry_date: '',
 				input_type: '',
+				error_romaneio: '',
 				error_id: '',
 				error_supplier: '',
 				error_reseller: '',
@@ -78,7 +81,7 @@ const submitForm = (that) => async (event) => {
 	idIsValid ?
 		that.setState({ error_id: '' })
 	:
-		that.setState({ error_id: 'Valor deve ter pelo menos 5 dígitos' })
+		that.setState({ error_id: 'Boleto deve ter pelo menos 5 dígitos' })
 	supplierExists ?
 		that.setState({ error_supplier: '' })
 	:

@@ -33,13 +33,11 @@ const Form = (props) => (
 				errorIcon={AlertSvg}
 				formSubmit={props.uiState === 'submitSuccess'}
 			/>
-			{/* reseller field */}
-			<DropDown
-				type='text'
-				placeholder='Lojista'
-				updateParent={props.saveReseller}
-				listToDisplay={props.resellers}
-				errorMessage={props.errorReseller}
+			{/* sellDate field */}
+			<DateInput
+				placeholder='Data da venda'
+				updateParent={props.saveSellDate}
+				errorMessage={props.errorSellDate} 
 				errorIcon={AlertSvg}
 				formSubmit={props.uiState === 'submitSuccess'}
 			/>
@@ -53,13 +51,13 @@ const Form = (props) => (
 				errorIcon={AlertSvg}
 				formSubmit={props.uiState === 'submitSuccess'}
 			/>
-			{/* payMethod field */}
+			{/* reseller field */}
 			<DropDown
 				type='text'
-				placeholder='Meio de pagamento'
-				updateParent={props.savePayMethod}
-				listToDisplay={props.payMethods}
-				errorMessage={props.errorPayMethod}
+				placeholder='Lojista'
+				updateParent={props.saveReseller}
+				listToDisplay={props.resellers}
+				errorMessage={props.errorReseller}
 				errorIcon={AlertSvg}
 				formSubmit={props.uiState === 'submitSuccess'}
 			/>
@@ -72,11 +70,30 @@ const Form = (props) => (
 				errorIcon={AlertSvg}
 				formSubmit={props.uiState === 'submitSuccess'}
 			/>
-			{/* sellDate field */}
+			{/* payMethod field */}
+			<DropDown
+				type='text'
+				placeholder='Meio de pagamento'
+				updateParent={props.savePayMethod}
+				listToDisplay={props.payMethods}
+				errorMessage={props.errorPayMethod}
+				errorIcon={AlertSvg}
+				formSubmit={props.uiState === 'submitSuccess'}
+			/>
+			{/* romaneio field */}
+			<DropDown
+				type='number'
+				placeholder='Romaneio'
+				updateParent={props.saveRomaneio}
+				errorMessage={props.errorRomaneio}
+				errorIcon={AlertSvg}
+				formSubmit={props.uiState === 'submitSuccess'}
+			/>
+			{/* expiryDate field */}
 			<DateInput
-				placeholder='Data da venda'
-				updateParent={props.saveSellDate}
-				errorMessage={props.errorSellDate} 
+				placeholder='Data de Vencimento'
+				updateParent={props.saveExpiryDate}
+				errorMessage={props.errorExpiryDate} 
 				errorIcon={AlertSvg}
 				formSubmit={props.uiState === 'submitSuccess'}
 			/>
@@ -96,14 +113,6 @@ const Form = (props) => (
 				updateParent={props.saveSeller}
 				listToDisplay={props.sellers}
 				errorMessage={props.errorSeller}
-				errorIcon={AlertSvg}
-				formSubmit={props.uiState === 'submitSuccess'}
-			/>
-			{/* expiryDate field */}
-			<DateInput
-				placeholder='Data de Vencimento'
-				updateParent={props.saveExpiryDate}
-				errorMessage={props.errorExpiryDate} 
 				errorIcon={AlertSvg}
 				formSubmit={props.uiState === 'submitSuccess'}
 			/>

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Form from './Form'
 import { initialState, transition } from './utils/stateMachine'
 import fetchInitialData from './utils/fetchInitialData'
+import saveRomaneio from './methods/saveRomaneio'
 import saveId from './methods/saveId'
 import saveSupplier from './methods/saveSupplier'
 import saveReseller from './methods/saveReseller'
@@ -26,8 +27,9 @@ export default class RegisterNewSale extends Component {
 			suppliers: [],
 			resellers: [],
 			payMethods: ['Boleto', 'Cheque', 'Crédito', 'Débito', 'Depósito', 'Dinheiro'],
-			sellers: ['Ariene', 'César', 'Leandro', 'Mariana', 'Rúbia', 'Tayná'],
+			sellers: ['Ariene', 'Cesar', 'Leandro', 'Mariana', 'Rubia', 'Tayna'],
 			/* user input data */
+			input_romaneio: '',
 			input_id: '',
 			input_supplier: '',
 			input_reseller: '',
@@ -39,6 +41,7 @@ export default class RegisterNewSale extends Component {
 			input_expiry_date: '',
 			input_type: '',
 			/* ui error message */
+			error_romaneio: '',
 			error_id: '',
 			error_supplier: '',
 			error_reseller: '',
@@ -63,6 +66,7 @@ export default class RegisterNewSale extends Component {
 	}
 	/* methods */
 	changeUiState = transition(this)
+	saveRomaneio = saveRomaneio(this)
 	saveId = saveId(this)
 	saveSupplier = saveSupplier(this)
 	saveReseller = saveReseller(this)
@@ -84,6 +88,9 @@ export default class RegisterNewSale extends Component {
 			default:
 				return (
 					<Form 
+						/* romaneio */
+						saveRomaneio={this.saveRomaneio}
+						errorRomaneio={this.state.error_romaneio}
 						/* id */
 						saveId={this.saveId}
 						errorId={this.state.error_id}
