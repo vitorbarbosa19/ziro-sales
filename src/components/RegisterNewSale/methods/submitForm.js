@@ -16,7 +16,7 @@ const submitForm = (that) => async (event) => {
 		return payMethod === that.state.input_pay_method
 	})
 	const valueIsValid = Boolean(parseFloat(that.state.input_value))
-	const sellDateIsValid = Boolean(that.state.input_sell_date)
+	const sellDateIsValid = Date.parse(that.state.input_sell_date) <= Date.parse(new Date())
 	const comissionIsValid = Boolean(parseFloat(that.state.input_comission))
 	const sellerExists = that.state.input_seller === that.state.sellers.find( (seller) => {
 		return seller === that.state.input_seller
@@ -101,7 +101,7 @@ const submitForm = (that) => async (event) => {
 	sellDateIsValid ?
 		that.setState({ error_sell_date: '' })
 	:
-		that.setState({ error_sell_date: 'Escolha uma data do calendário' })
+		that.setState({ error_sell_date: 'Escolha uma data no máximo até hoje' })
 	comissionIsValid ?
 		that.setState({ error_comission: '' })
 	:
