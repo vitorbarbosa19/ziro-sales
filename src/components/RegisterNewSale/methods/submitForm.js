@@ -16,7 +16,7 @@ const submitForm = (that) => async (event) => {
 		return payMethod === that.state.input_pay_method
 	})
 	const valueIsValid = Boolean(parseFloat(that.state.input_value))
-	const sellDateIsValid = Date.parse(that.state.input_sell_date) <= Date.parse(new Date())
+	const sellDateIsValid = that.state.input_sell_date && that.state.input_sell_date - 3600*12*1000 <= Date.parse(new Date())
 	const comissionIsValid = Boolean(parseFloat(that.state.input_comission))
 	const sellerExists = that.state.input_seller === that.state.sellers.find( (seller) => {
 		return seller === that.state.input_seller
