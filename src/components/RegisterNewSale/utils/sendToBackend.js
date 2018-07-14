@@ -5,7 +5,7 @@ import encodeParameter from './encodeParameter'
 const sendToBackend = (...parameters) => {
 	return new Promise( async (resolve, reject) => {
 		const [ romaneio, boleto, fornecedor, lojista, pagamento, valor, venda,
-			comissao, assessor, vencimento, tipo ] = parameters
+			comissao, receita, quantidade, assessor, vencimento, tipo ] = parameters
 		const address = `https://ziro-sales-backend.herokuapp.com/`
 		const url = `
 		${address}?
@@ -16,7 +16,8 @@ const sendToBackend = (...parameters) => {
 		pagamento=${pagamento}&
 		valor=${valor}&
 		venda=${dateFormatter(venda)}&
-		comissao=${parseFloat(comissao / 100)}&
+		comissao=${parseFloat(comissao / 100)}
+		quantidade=${quantidade}&
 		assessor=${assessor}&
 		vencimento=${dateFormatter(vencimento)}&
 		tipo=${tipo}`

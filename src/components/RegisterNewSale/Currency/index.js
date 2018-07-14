@@ -29,10 +29,10 @@ export default class Currency extends Component {
 					{this.props.errorMessage ? this.props.errorIcon(16, 16) : null} &nbsp; {this.props.errorMessage}
 				</label>
 				<input
-					style={this.state.hasFocus ? inputFocus : input}
+					style={this.props.fixed === 'Yes' ? inputFocus : this.state.hasFocus ? inputFocus : input}
 					type='text'
 					placeholder={this.props.placeholder}
-					value={formatInput(this.state.userInput, this.props.symbol)}
+					value={this.props.fixed === 'Yes' ? this.props.symbol : formatInput(this.state.userInput, this.props.symbol)}
 					onChange={this.getUserInput}
 					onFocus={this.toggleFocus}
 					onBlur={this.toggleFocus}

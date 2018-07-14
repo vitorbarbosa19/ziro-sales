@@ -10,6 +10,8 @@ import savePayMethod from './methods/savePayMethod'
 import saveValue from './methods/saveValue'
 import saveSellDate from './methods/saveSellDate'
 import saveComission from './methods/saveComission'
+import saveIncome from './methods/saveIncome'
+import saveQuantity from './methods/saveQuantity'
 import saveSeller from './methods/saveSeller'
 import saveExpiryDate from './methods/saveExpiryDate'
 import saveType from './methods/saveType'
@@ -27,7 +29,7 @@ export default class RegisterNewSale extends Component {
 			suppliers: [],
 			resellers: [],
 			payMethods: ['Boleto', 'Cheque', 'Crédito', 'Débito', 'Depósito', 'Dinheiro'],
-			sellers: ['Ariene', 'Cesar', 'Leandro', 'Mariana', 'Rubia', 'Tayna'],
+			sellers: ['Ariene', 'Cesar', 'John', 'Mariana', 'Rubia'],
 			/* user input data */
 			input_romaneio: '',
 			input_id: '',
@@ -37,6 +39,8 @@ export default class RegisterNewSale extends Component {
 			input_value: '',
 			input_sell_date: '',
 			input_comission: '',
+			input_income: '',
+			input_quantity: '',
 			input_seller: '',
 			input_expiry_date: '',
 			input_type: '',
@@ -49,6 +53,8 @@ export default class RegisterNewSale extends Component {
 			error_value: '',
 			error_sell_date: '',
 			error_comission: '',
+			error_income: '',
+			error_quantity: '',
 			error_seller: '',
 			error_expiry_date: '',
 			error_type: ''
@@ -74,6 +80,8 @@ export default class RegisterNewSale extends Component {
 	saveValue = saveValue(this)
 	saveSellDate = saveSellDate(this)
 	saveComission = saveComission(this)
+	saveIncome = saveIncome(this)
+	saveQuantity = saveQuantity(this)
 	saveSeller = saveSeller(this)
 	saveExpiryDate = saveExpiryDate(this)
 	saveType = saveType(this)
@@ -115,6 +123,13 @@ export default class RegisterNewSale extends Component {
 						/* comission */
 						saveComission={this.saveComission}
 						errorComission={this.state.error_comission}
+						/* income */
+						saveIncome={this.saveIncome}
+						errorIncome={this.state.error_income}
+						income={this.state.input_value * this.state.input_comission / 100}
+						/* quantity */
+						saveQuantity={this.saveQuantity}
+						errorQuantity={this.state.error_quantity}
 						/* sellers */
 						sellers={this.state.sellers}
 						saveSeller={this.saveSeller}

@@ -63,6 +63,7 @@ const Form = (props) => (
 			/>
 			{/* value field */}
 			<Currency
+				fixed='No'
 				symbol='R$'
 				placeholder='Valor da venda'
 				updateParent={props.saveValue}
@@ -99,10 +100,30 @@ const Form = (props) => (
 			/>
 			{/* comission field */}
 			<Currency
+				fixed='No'
 				symbol='%'
 				placeholder='Comissão'
 				updateParent={props.saveComission}
 				errorMessage={props.errorComission}
+				errorIcon={AlertSvg}
+				formSubmit={props.uiState === 'submitSuccess'}
+			/>
+			{/* income field */}
+			<Currency
+				fixed='Yes'
+				symbol={`Receita R$ ${parseFloat(props.income).toFixed(2)}`}
+				placeholder='Receita'
+				updateParent={props.saveIncome}
+				errorMessage={props.errorIncome}
+				errorIcon={AlertSvg}
+				formSubmit={props.uiState === 'submitSuccess'}
+			/>
+			{/* quantity field */}
+			<DropDown
+				type='number'
+				placeholder='Quantidade de peças'
+				updateParent={props.saveQuantity}
+				errorMessage={props.errorQuantity}
 				errorIcon={AlertSvg}
 				formSubmit={props.uiState === 'submitSuccess'}
 			/>

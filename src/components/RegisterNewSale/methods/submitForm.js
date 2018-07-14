@@ -18,6 +18,7 @@ const submitForm = (that) => async (event) => {
 	const valueIsValid = Boolean(parseFloat(that.state.input_value))
 	const sellDateIsValid = that.state.input_sell_date && that.state.input_sell_date - 3600*12*1000 <= Date.parse(new Date())
 	const comissionIsValid = Boolean(parseFloat(that.state.input_comission))
+	const quantityIsValid = Boolean(that.state.input_quantity)
 	const sellerExists = that.state.input_seller === that.state.sellers.find( (seller) => {
 		return seller === that.state.input_seller
 	})
@@ -28,8 +29,8 @@ const submitForm = (that) => async (event) => {
 	/* ------------------------------------------------ */
 	/* if validated, then submit, else notify of errors */
 	/* ------------------------------------------------ */
-	if (idIsValid && supplierExists && resellerExists && payMethodExists && valueIsValid &&
-			sellDateIsValid && comissionIsValid && sellerExists && expiryDateIsValid && typeIsValid) {
+	if (idIsValid && supplierExists && resellerExists && payMethodExists && valueIsValid && sellDateIsValid 
+			&& comissionIsValid && quantityIsValid && sellerExists && expiryDateIsValid && typeIsValid) {
 		that.changeUiState('FORM_SUBMIT')
 		try {
 			await sendToBackend(
@@ -41,6 +42,8 @@ const submitForm = (that) => async (event) => {
 				that.state.input_value,
 				that.state.input_sell_date,
 				that.state.input_comission,
+				that.state.input_income,
+				that.state.input_quantity,
 				that.state.input_seller,
 				that.state.input_expiry_date,
 				that.state.input_type
@@ -54,6 +57,8 @@ const submitForm = (that) => async (event) => {
 				input_value: '',
 				input_sell_date: '',
 				input_comission: '',
+				input_income: '',
+				input_quantity: '',
 				input_seller: '',
 				input_expiry_date: '',
 				input_type: '',
@@ -65,6 +70,8 @@ const submitForm = (that) => async (event) => {
 				error_value: '',
 				error_sell_date: '',
 				error_comission: '',
+				error_income: '',
+				error_quantity: '',
 				error_seller: '',
 				error_expiry_date: '',
 				error_type: ''
@@ -106,6 +113,10 @@ const submitForm = (that) => async (event) => {
 		that.setState({ error_comission: '' })
 	:
 		that.setState({ error_comission: 'Preencha esse campo' })
+	quantityIsValid ?
+		that.setState({ error_quantity: '' })
+	:
+		that.setState({ error_quantity: 'Preencha esse campo' })
 	sellerExists ?
 		that.setState({ error_seller: '' })
 	:
