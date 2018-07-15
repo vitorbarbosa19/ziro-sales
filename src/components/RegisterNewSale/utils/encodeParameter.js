@@ -1,5 +1,4 @@
 const encodeParameter = (parameter) => {
-	console.log(parameter)
 	const matches = parameter.match(/!|#|\$|&|'|\(|\)|\*|\+|,|\/|:|;|=|\?|@|\[|\]/g)
 	if(matches)
 		for (let i = 0; i < matches.length; i++)

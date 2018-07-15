@@ -16,7 +16,7 @@ const sendToBackend = (...parameters) => {
 		pagamento=${pagamento}&
 		valor=${valor}&
 		venda=${dateFormatter(venda)}&
-		comissao=${parseFloat(comissao / 100)}
+		comissao=${parseFloat(comissao / 100)}&
 		quantidade=${quantidade}&
 		assessor=${assessor}&
 		vencimento=${dateFormatter(vencimento)}&
