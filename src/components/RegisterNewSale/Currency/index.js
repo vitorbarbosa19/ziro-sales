@@ -13,9 +13,25 @@ export default class Currency extends Component {
 			hasFocus: false
 		}
 	}
-	componentDidUpdate() {
+	componentDidUpdate(prevProps) {
 		if (this.state.userInput !== '' && this.props.formSubmit)
 			this.clearInput()
+		if (this.props.supplierSelected !== prevProps.supplierSelected) {
+			const comissionObject = this.props.suppliersComission.filter(
+				supplier => Object.keys(supplier)[0] === this.props.supplierSelected
+			).pop()
+			let comissionUnformatted
+			if (comissionObject) {
+				comissionUnformatted = Object.values(comissionObject).pop()
+			}
+			let comission
+			if (comissionUnformatted)
+				comission = comissionUnformatted.replace(',','.').replace('%','')
+			this.setState({
+				userInput: comission ? comission * 100 : '',
+				hasFocus: comission ? true : false
+			}, () => this.props.updateParent(this.state.userInput / 100))
+		}
 	}
 	/* methods */
 	getUserInput = getUserInput(this)

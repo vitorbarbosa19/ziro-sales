@@ -100,6 +100,8 @@ const Form = (props) => (
 			/>
 			{/* comission field */}
 			<Currency
+				supplierSelected={props.supplierSelected}
+				suppliersComission={props.suppliersComission}
 				fixed='No'
 				symbol='%'
 				placeholder='Comissão'

@@ -28,6 +28,7 @@ export default class RegisterNewSale extends Component {
 			/* presentational data */
 			suppliers: [],
 			resellers: [],
+			suppliersComission: [],
 			payMethods: ['Boleto', 'Cheque', 'Crédito', 'Débito', 'Depósito', 'Dinheiro'],
 			sellers: ['Ariene', 'Cesar', 'John', 'Mariana', 'Rubia'],
 			/* user input data */
@@ -62,9 +63,9 @@ export default class RegisterNewSale extends Component {
 	}
 	async componentDidMount() {
 		try {
-			const { suppliers, resellers, status } = await fetchInitialData()
+			const { suppliers, resellers, suppliersComission, status } = await fetchInitialData()
 			this.changeUiState(status)
-			this.setState({ suppliers, resellers })
+			this.setState({ suppliers, resellers, suppliersComission })
 		} catch (error) {
 			console.log(error)
 			this.changeUiState('FETCH_ERROR')
@@ -123,6 +124,7 @@ export default class RegisterNewSale extends Component {
 						/* comission */
 						saveComission={this.saveComission}
 						errorComission={this.state.error_comission}
+						supplierSelected={this.state.input_supplier}
 						/* income */
 						saveIncome={this.saveIncome}
 						errorIncome={this.state.error_income}
@@ -141,6 +143,7 @@ export default class RegisterNewSale extends Component {
 						saveType={this.saveType}
 						errorType={this.state.error_type}
 						/* others */
+						suppliersComission={this.state.suppliersComission}
 						submitForm={this.submitForm}
 						uiState={this.state.uiState}
 					/>
