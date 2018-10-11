@@ -5,6 +5,7 @@ import fetchInitialData from './utils/fetchInitialData'
 import saveRomaneio from './methods/saveRomaneio'
 import saveId from './methods/saveId'
 import saveSupplier from './methods/saveSupplier'
+import saveAddress from './methods/saveAddress'
 import saveReseller from './methods/saveReseller'
 import savePayMethod from './methods/savePayMethod'
 import saveValue from './methods/saveValue'
@@ -28,9 +29,11 @@ export default class RegisterNewSale extends Component {
 			/* presentational data */
 			suppliers: [],
 			resellers: [],
-			suppliersComission: [],
+			addresses: [],
+			comissions: [],
 			payMethods: ['Boleto', 'Cheque', 'Crédito', 'Débito', 'Depósito', 'Dinheiro'],
 			sellers: ['Ariene', 'Cesar', 'John', 'Mariana', 'Rubia'],
+			address: [],
 			/* user input data */
 			input_romaneio: '',
 			input_id: '',
@@ -45,6 +48,7 @@ export default class RegisterNewSale extends Component {
 			input_seller: '',
 			input_expiry_date: '',
 			input_type: '',
+			input_address: '',
 			/* ui error message */
 			error_romaneio: '',
 			error_id: '',
@@ -58,14 +62,15 @@ export default class RegisterNewSale extends Component {
 			error_quantity: '',
 			error_seller: '',
 			error_expiry_date: '',
-			error_type: ''
+			error_type: '',
+			error_address: ''
 		}
 	}
 	async componentDidMount() {
 		try {
-			const { suppliers, resellers, suppliersComission, status } = await fetchInitialData()
+			const { suppliers, addresses, resellers, comissions, status } = await fetchInitialData()
 			this.changeUiState(status)
-			this.setState({ suppliers, resellers, suppliersComission })
+			this.setState({ suppliers, addresses, resellers, comissions })
 		} catch (error) {
 			console.log(error)
 			this.changeUiState('FETCH_ERROR')
@@ -76,6 +81,7 @@ export default class RegisterNewSale extends Component {
 	saveRomaneio = saveRomaneio(this)
 	saveId = saveId(this)
 	saveSupplier = saveSupplier(this)
+	saveAddress = saveAddress(this)
 	saveReseller = saveReseller(this)
 	savePayMethod = savePayMethod(this)
 	saveValue = saveValue(this)
@@ -107,6 +113,10 @@ export default class RegisterNewSale extends Component {
 						suppliers={this.state.suppliers}
 						saveSupplier={this.saveSupplier}
 						errorSupplier={this.state.error_supplier}
+						/* address */
+						saveAddress={this.saveAddress}
+						errorAddress={this.state.error_address}
+						supplierSelected={this.state.input_supplier}
 						/* resellers */
 						resellers={this.state.resellers}
 						saveReseller={this.saveReseller}
@@ -143,7 +153,8 @@ export default class RegisterNewSale extends Component {
 						saveType={this.saveType}
 						errorType={this.state.error_type}
 						/* others */
-						suppliersComission={this.state.suppliersComission}
+						comissions={this.state.comissions}
+						address={this.state.address}
 						submitForm={this.submitForm}
 						uiState={this.state.uiState}
 					/>

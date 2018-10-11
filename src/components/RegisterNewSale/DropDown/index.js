@@ -20,6 +20,8 @@ export default class DropDown extends Component {
 	componentDidUpdate() {
 		if (this.state.userInput !== '' && this.props.formSubmit)
 			this.clearInput()
+		if (this.props.address && this.props.address.length === 0 && this.state.filter && this.state.filter.length > 0)
+			this.setState({ userInput: '', filter: [], inputIsNotEmpty: false })
 	}
 	/* methods */
 	getUserInput = getUserInput(this)

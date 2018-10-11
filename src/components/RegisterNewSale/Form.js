@@ -51,6 +51,17 @@ const Form = (props) => (
 				errorIcon={AlertSvg}
 				formSubmit={props.uiState === 'submitSuccess'}
 			/>
+			{/* address field */}
+			<DropDown
+				address={props.address}
+				type='text'
+				placeholder='Endereço'
+				updateParent={props.saveAddress}
+				listToDisplay={props.address}
+				errorMessage={props.errorAddress}
+				errorIcon={AlertSvg}
+				formSubmit={props.uiState === 'submitSuccess'}
+			/>
 			{/* reseller field */}
 			<DropDown
 				type='text'
@@ -101,7 +112,7 @@ const Form = (props) => (
 			{/* comission field */}
 			<Currency
 				supplierSelected={props.supplierSelected}
-				suppliersComission={props.suppliersComission}
+				suppliersComission={props.comissions}
 				fixed='No'
 				symbol='%'
 				placeholder='Comissão'
