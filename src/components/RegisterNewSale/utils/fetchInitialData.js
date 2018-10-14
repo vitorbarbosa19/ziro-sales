@@ -14,7 +14,6 @@ const fetchInitialData = async () => {
 	})).slice(1)
 	const resellers = resellerSheet.data.values.map( (resellerInfo) => resellerInfo[0] ).slice(1).sort()
 	const status = 'FETCH_OK'
-	console.log(addresses)
 	return { suppliers, comissions, addresses, resellers, status }
 }
 
