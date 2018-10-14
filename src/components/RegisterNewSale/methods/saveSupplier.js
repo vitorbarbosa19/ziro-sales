@@ -4,7 +4,7 @@ const saveSupplier = (that) => (input) => {
 	).pop()
 	that.setState({ input_supplier: input })
 	if (address)
-		that.setState({ address: Object.values(address) })
+		that.setState({ address: Object.values(address).pop() })
 	else
 		that.setState({ address: [], input_address: '' })
 }
