@@ -15,6 +15,7 @@ const submitForm = (that) => async (event) => {
 	const payMethodExists = that.state.input_pay_method === that.state.payMethods.find( (payMethod) => {
 		return payMethod === that.state.input_pay_method
 	})
+	const addressIsValid = Boolean(that.state.input_address)
 	const valueIsValid = Boolean(parseFloat(that.state.input_value))
 	const sellDateIsValid = that.state.input_sell_date && that.state.input_sell_date - 3600*12*1000 <= Date.parse(new Date())
 	const comissionIsValid = Boolean(parseFloat(that.state.input_comission))
@@ -29,7 +30,7 @@ const submitForm = (that) => async (event) => {
 	/* ------------------------------------------------ */
 	/* if validated, then submit, else notify of errors */
 	/* ------------------------------------------------ */
-	if (idIsValid && supplierExists && resellerExists && payMethodExists && valueIsValid && sellDateIsValid 
+	if (idIsValid && supplierExists && resellerExists && addressIsValid && payMethodExists && valueIsValid && sellDateIsValid 
 			&& comissionIsValid && quantityIsValid && sellerExists && expiryDateIsValid && typeIsValid) {
 		that.changeUiState('FORM_SUBMIT')
 		try {
@@ -46,7 +47,8 @@ const submitForm = (that) => async (event) => {
 				that.state.input_quantity,
 				that.state.input_seller,
 				that.state.input_expiry_date,
-				that.state.input_type
+				that.state.input_type,
+				that.state.input_address
 			)
 			that.setState({
 				input_romaneio: '',
@@ -62,6 +64,7 @@ const submitForm = (that) => async (event) => {
 				input_seller: '',
 				input_expiry_date: '',
 				input_type: '',
+				input_address: '',
 				error_romaneio: '',
 				error_id: '',
 				error_supplier: '',
@@ -74,7 +77,8 @@ const submitForm = (that) => async (event) => {
 				error_quantity: '',
 				error_seller: '',
 				error_expiry_date: '',
-				error_type: ''
+				error_type: '',
+				error_address: ''
 			})
 			that.changeUiState('SUBMIT_OK')
 			alert('Formulário enviado com sucesso!')
@@ -97,6 +101,10 @@ const submitForm = (that) => async (event) => {
 		that.setState({ error_reseller: ''})
 	:
 		that.setState({ error_reseller: 'Lojista não cadastrado' })
+	addressIsValid ?
+		that.setState({ error_address: ''})
+	:
+		that.setState({ error_address: 'Preencha esse campo' })
 	payMethodExists ?
 		that.setState({ error_pay_method: '' })
 	:

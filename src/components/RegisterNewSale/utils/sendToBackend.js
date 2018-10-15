@@ -5,22 +5,24 @@ import encodeParameter from './encodeParameter'
 const sendToBackend = (...parameters) => {
 	return new Promise( async (resolve, reject) => {
 		const [ romaneio, boleto, fornecedor, lojista, pagamento, valor, venda,
-			comissao, receita, quantidade, assessor, vencimento, tipo ] = parameters
+			comissao, receita, quantidade, assessor, vencimento, tipo, endereco ] = parameters
 		const address = `https://ziro-sales-backend.herokuapp.com/`
 		const url = `
-		${address}?
-		romaneio=${romaneio}&
-		boleto=${boleto}&
-		lojista=${encodeParameter(lojista)}&
-		fornecedor=${encodeParameter(fornecedor)}&
-		pagamento=${pagamento}&
-		valor=${valor}&
-		venda=${dateFormatter(venda)}&
-		comissao=${parseFloat(comissao / 100)}&
-		quantidade=${quantidade}&
-		assessor=${assessor}&
-		vencimento=${dateFormatter(vencimento)}&
-		tipo=${tipo}`
+			${address}?
+			romaneio=${romaneio}&
+			boleto=${boleto}&
+			lojista=${encodeParameter(lojista)}&
+			fornecedor=${encodeParameter(fornecedor)}&
+			endereco=${endereco}&
+			pagamento=${pagamento}&
+			valor=${valor}&
+			venda=${dateFormatter(venda)}&
+			comissao=${parseFloat(comissao / 100)}&
+			quantidade=${quantidade}&
+			assessor=${assessor}&
+			vencimento=${dateFormatter(vencimento)}&
+			tipo=${tipo}
+		`
 		try {
 			const response = await axios.get(url)
 			if (response.data === 'INVALID_REQUEST')
