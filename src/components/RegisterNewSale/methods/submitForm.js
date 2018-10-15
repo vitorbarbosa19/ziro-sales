@@ -15,7 +15,7 @@ const submitForm = (that) => async (event) => {
 	const payMethodExists = that.state.input_pay_method === that.state.payMethods.find( (payMethod) => {
 		return payMethod === that.state.input_pay_method
 	})
-	const addressIsValid = Boolean(that.state.input_address)
+	const addressIsValid = that.state.input_address.length > 1
 	const valueIsValid = Boolean(parseFloat(that.state.input_value))
 	const sellDateIsValid = that.state.input_sell_date && that.state.input_sell_date - 3600*12*1000 <= Date.parse(new Date())
 	const comissionIsValid = Boolean(parseFloat(that.state.input_comission))
@@ -48,9 +48,10 @@ const submitForm = (that) => async (event) => {
 				that.state.input_seller,
 				that.state.input_expiry_date,
 				that.state.input_type,
-				that.state.input_address
+				that.state.input_address,
 			)
 			that.setState({
+				address: [],
 				input_romaneio: '',
 				input_id: '',
 				input_supplier: '',
