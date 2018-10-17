@@ -52,6 +52,7 @@ export default class RegisterNewSale extends Component {
 			/* ui error message */
 			error_romaneio: '',
 			error_id: '',
+			error_id_is_duplicate: '',
 			error_supplier: '',
 			error_reseller: '',
 			error_pay_method: '',
@@ -108,7 +109,7 @@ export default class RegisterNewSale extends Component {
 						errorRomaneio={this.state.error_romaneio}
 						/* id */
 						saveId={this.saveId}
-						errorId={this.state.error_id}
+						errorId={this.state.error_id || this.state.error_id_is_duplicate}
 						/* suppliers */
 						suppliers={this.state.suppliers}
 						saveSupplier={this.saveSupplier}

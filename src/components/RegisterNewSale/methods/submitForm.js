@@ -1,4 +1,5 @@
 import sendToBackend from '../utils/sendToBackend'
+import notDuplicate from '../utils/notDuplicate'
 
 const submitForm = (that) => async (event) => {
 	event.preventDefault()
@@ -6,6 +7,7 @@ const submitForm = (that) => async (event) => {
 	/* validate user inputs */
 	/* -------------------- */
 	const idIsValid = that.state.input_id.toString().length > 4
+	const idIsNotDuplicate = idIsValid && await notDuplicate(that.state.input_id)
 	const supplierExists = that.state.input_supplier === that.state.suppliers.find( (supplier) => {
 		return supplier === that.state.input_supplier
 	})
@@ -30,8 +32,8 @@ const submitForm = (that) => async (event) => {
 	/* ------------------------------------------------ */
 	/* if validated, then submit, else notify of errors */
 	/* ------------------------------------------------ */
-	if (idIsValid && supplierExists && resellerExists && addressIsValid && payMethodExists && valueIsValid && sellDateIsValid 
-			&& comissionIsValid && quantityIsValid && sellerExists && expiryDateIsValid && typeIsValid) {
+	if (idIsValid && idIsNotDuplicate && supplierExists && resellerExists && addressIsValid && payMethodExists && valueIsValid
+		&& sellDateIsValid && comissionIsValid && quantityIsValid && sellerExists && expiryDateIsValid && typeIsValid) {
 		that.changeUiState('FORM_SUBMIT')
 		try {
 			await sendToBackend(
@@ -68,6 +70,7 @@ const submitForm = (that) => async (event) => {
 				input_address: '',
 				error_romaneio: '',
 				error_id: '',
+				error_id_is_duplicate: '',
 				error_supplier: '',
 				error_reseller: '',
 				error_pay_method: '',
@@ -94,6 +97,10 @@ const submitForm = (that) => async (event) => {
 		that.setState({ error_id: '' })
 	:
 		that.setState({ error_id: 'Boleto deve ter pelo menos 5 dígitos' })
+	idIsNotDuplicate ?
+		that.setState({ error_id_is_duplicate: '' })
+	:
+		that.setState({ error_id_is_duplicate: 'Boleto já cadastrado na base' })
 	supplierExists ?
 		that.setState({ error_supplier: '' })
 	:
