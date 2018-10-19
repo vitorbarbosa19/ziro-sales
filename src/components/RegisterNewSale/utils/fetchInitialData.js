@@ -7,7 +7,7 @@ const fetchInitialData = async () => {
 	const comissions = supplierSheet.data.values.map( (supplierInfo) => Object.assign({}, { [supplierInfo[0]]: supplierInfo[1] }) ).slice(1)
 	const addresses = supplierSheet.data.values.map( (supplierInfo) => Object.assign({}, {
 		[supplierInfo[0]]: supplierInfo.slice(2).reduce( (fullAddress, value, index, array) => {
-			if (index % 2 === 0)
+			if (index % 2 === 0 && array[index + 1])
 				fullAddress.push(`${array[index]} — ${array[index + 1]}`)
 			return fullAddress
 		}, [])
