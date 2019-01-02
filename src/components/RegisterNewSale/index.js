@@ -32,7 +32,7 @@ export default class RegisterNewSale extends Component {
 			addresses: [],
 			comissions: [],
 			payMethods: ['Boleto', 'Cheque', 'Crédito', 'Débito', 'Depósito', 'Dinheiro'],
-			sellers: ['Ariene', 'Cesar', 'John', 'Mariana', 'Rubia'],
+			sellers: [],
 			address: [],
 			/* user input data */
 			input_romaneio: '',
@@ -69,9 +69,9 @@ export default class RegisterNewSale extends Component {
 	}
 	async componentDidMount() {
 		try {
-			const { suppliers, addresses, resellers, comissions, status } = await fetchInitialData()
+			const { suppliers, addresses, resellers, comissions, sellers, status } = await fetchInitialData()
 			this.changeUiState(status)
-			this.setState({ suppliers, addresses, resellers, comissions })
+			this.setState({ suppliers, addresses, resellers, comissions, sellers })
 		} catch (error) {
 			console.log(error)
 			this.changeUiState('FETCH_ERROR')

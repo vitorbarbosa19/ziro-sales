@@ -37,12 +37,13 @@ const config = {
 }
 
 if (process.env.NODE_ENV !== 'production') {
-	const { suppliers, resellers, transactions } = require('./credentials')
+	const { suppliers, resellers, representatives, transactions } = require('./credentials')
 	config.plugins.push(
 		new webpack.DefinePlugin({
 			'process.env': {
 				SUPPLIERS_SHEET_URL: JSON.stringify(suppliers),
 				RESELLERS_SHEET_URL: JSON.stringify(resellers),
+				REPRESENTATIVES_SHEET_URL: JSON.stringify(representatives),
 				TRANSACTIONS_SHEET_URL: JSON.stringify(transactions)
 			}
 		})
@@ -57,6 +58,7 @@ if (process.env.NODE_ENV === 'production') {
 			'process.env': {
 				SUPPLIERS_SHEET_URL: JSON.stringify(process.env.SUPPLIERS_SHEET_URL),
 				RESELLERS_SHEET_URL: JSON.stringify(process.env.RESELLERS_SHEET_URL),
+				REPRESENTATIVES_SHEET_URL: JSON.stringify(process.env.REPRESENTATIVES_SHEET_URL),
 				TRANSACTIONS_SHEET_URL: JSON.stringify(process.env.TRANSACTIONS_SHEET_URL),
 				NODE_ENV: JSON.stringify('production')
 			}
