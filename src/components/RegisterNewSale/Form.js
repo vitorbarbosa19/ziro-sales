@@ -22,7 +22,7 @@ const Form = (props) => (
 	      secure='true'
 	    />
 	  </div>
-		<h1 style={title}>Cadastro de vendas 2018</h1>
+		<h1 style={title}>Cadastro de boletos</h1>
 		<form id='form' onSubmit={props.submitForm}>
 			{/* id field */}
 			<DropDown
