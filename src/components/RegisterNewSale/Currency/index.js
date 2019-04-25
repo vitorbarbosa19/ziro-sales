@@ -9,7 +9,7 @@ export default class Currency extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			userInput: '',
+			userInput: 0,
 			hasFocus: false
 		}
 	}
@@ -45,7 +45,7 @@ export default class Currency extends Component {
 					{this.props.errorMessage ? this.props.errorIcon(16, 16) : null} &nbsp; {this.props.errorMessage}
 				</label>
 				<input
-					style={this.props.fixed === 'Yes' ? inputFocus : this.state.hasFocus ? inputFocus : input}
+					style={inputFocus}
 					type='text'
 					placeholder={this.props.placeholder}
 					value={this.props.fixed === 'Yes' ? this.props.symbol : formatInput(this.state.userInput, this.props.symbol)}
