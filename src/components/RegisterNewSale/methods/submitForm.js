@@ -18,9 +18,7 @@ const submitForm = (that) => async (event) => {
 		return payMethod === that.state.input_pay_method
 	})
 	const addressIsValid = that.state.input_address.length > 1
-	const valueIsValid = Boolean(parseFloat(that.state.input_value))
-	const sellDateIsValid = that.state.input_sell_date && that.state.input_sell_date - 3600*12*1000 <= Date.parse(new Date())
-	const comissionIsValid = Boolean(parseFloat(that.state.input_comission))
+	const sellDateIsValid = that.state.input_sell_date && that.state.input_sell_date - 3600*12*1000 <= Date.parse(new Date())	
 	const quantityIsValid = Boolean(that.state.input_quantity)
 	const sellerExists = that.state.input_seller === that.state.sellers.find( (seller) => {
 		return seller === that.state.input_seller
@@ -32,8 +30,8 @@ const submitForm = (that) => async (event) => {
 	/* ------------------------------------------------ */
 	/* if validated, then submit, else notify of errors */
 	/* ------------------------------------------------ */
-	if (idIsValid && idIsNotDuplicate && supplierExists && resellerExists && addressIsValid && payMethodExists && valueIsValid
-		&& sellDateIsValid && comissionIsValid && quantityIsValid && sellerExists && expiryDateIsValid && typeIsValid) {
+	if (idIsValid && idIsNotDuplicate && supplierExists && resellerExists && addressIsValid && payMethodExists
+		&& sellDateIsValid && quantityIsValid && sellerExists && expiryDateIsValid && typeIsValid) {
 		that.changeUiState('FORM_SUBMIT')
 		try {
 			await sendToBackend(
@@ -117,18 +115,10 @@ const submitForm = (that) => async (event) => {
 		that.setState({ error_pay_method: '' })
 	:
 		that.setState({ error_pay_method: 'Meio de pagamento não cadastrado' })
-	valueIsValid ?
-		that.setState({ error_value: '' })
-	:
-		that.setState({ error_value: 'Preencha esse campo' })
 	sellDateIsValid ?
 		that.setState({ error_sell_date: '' })
 	:
 		that.setState({ error_sell_date: 'Escolha uma data no máximo até hoje' })
-	comissionIsValid ?
-		that.setState({ error_comission: '' })
-	:
-		that.setState({ error_comission: 'Preencha esse campo' })
 	quantityIsValid ?
 		that.setState({ error_quantity: '' })
 	:
